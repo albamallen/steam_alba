@@ -85,11 +85,11 @@
             </div>
           </div>
           <div class="Frame61">
-            <ButtonGris :showIcon="true" IconName="line-md:plus"/>
-            <ButtonGris :showIcon="true" IconName="line-md:plus"/>
-            <ButtonGris :showIcon="true" IconName="line-md:plus"/>
-            <ButtonGris :showIcon="true" IconName="line-md:plus"/>
-            <ButtonGris :showIcon="true" IconName="line-md:plus"/>
+            <ButtonGris :showIcon="true" IconName="ic:outline-local-mall"/>
+            <ButtonGris :showIcon="true" IconName="ic:outline-local-mall"/>
+            <ButtonGris :showIcon="true" IconName="ic:outline-local-mall"/>
+            <ButtonGris :showIcon="true" IconName="ic:outline-local-mall"/>
+            <ButtonGris :showIcon="true" IconName="ic:outline-local-mall"/>
           </div>
         </div>
         <div class="Frame62">
@@ -164,7 +164,7 @@
       </div>
       <div class="Frame65">
         <div class="BttIconSearch">
-            <!-- <ButtonGris :showIcon="true" IconName="line-md:plus"/> -->
+            <!-- <ButtonGris :showIcon="true" IconName="ic:outline-local-mall"/> -->
         </div>
       </div>
     </div>

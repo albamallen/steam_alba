@@ -1,35 +1,38 @@
 <template>
-  <div class="frame">
-    <div class="modal-juego">
-      <div class="video-container">
-        <div class="image-container">
-          <img :src="gameImage" alt="Game Image"/>
-        </div>
-        <div class="labels-div">
-            <Genero />
-        </div>
-      </div>
-      <div class="text-container">
-        <div class="text-div">
-          <div class="nombre-del-juego h3">{{ gameTitle }}</div>
-          <div class="new-release sec-text">New release</div>
-          <div class="description h5">
-            {{ gameDescription }}
+  <NuxtLink :to="`/gamesdet/${gameId}`">
+    <div class="frame">
+      <div class="modal-juego">
+        <div class="video-container">
+          <div class="image-container">
+            <img :src="gameImage" alt="Game Image"/>
+          </div>
+          <div class="labels-div">
+              <Genero />
           </div>
         </div>
-        <div class="btt-div">
-          <Button buttonText="13,95€" />
-          <ButtonGris :showIcon="true" IconName="line-md:plus"/>
+        <div class="text-container">
+          <div class="text-div">
+            <div class="nombre-del-juego h3">{{ gameTitle }}</div>
+            <div class="new-release sec-text">New release</div>
+            <div class="description h5">
+              {{ gameDescription }}
+            </div>
+          </div>
+          <div class="btt-div">
+            <Button buttonText="13,95€" />
+            <ButtonGris :showIcon="true" IconName="ic:outline-local-mall"/>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </NuxtLink>
 </template>
 
 <script>
 import axios from 'axios';
 import Button from '../components/Button.vue';
 import ButtonGris from '../components/ButtonGris.vue';
+import Genero from '../components/Genero.vue';
 
 const apiKey = '9a49841e50b64aeaafa0b18bee4b2e30'; // Replace with your RAWG API key
 
@@ -37,14 +40,15 @@ export default {
   name: 'ModalJuego',
   components: {
     Button,
-    ButtonGris
+    ButtonGris,
+    Genero
   },
   data() {
     return {
       gameImage: '',
       gameTitle: '',
       gameDescription: '',
-      gameGenre: '',
+      gameId: null,
       usedIds: new Set(),
     };
   },
@@ -66,6 +70,7 @@ export default {
 
         this.usedIds.add(randomGame.id);
 
+        this.gameId = randomGame.id;
         this.gameImage = randomGame.background_image;
         this.gameTitle = randomGame.name;
 
@@ -84,6 +89,7 @@ export default {
   }
 };
 </script>
+
 
 <style scoped>
 .frame {

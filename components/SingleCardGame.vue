@@ -1,78 +1,85 @@
 <template>
-    <div class="Property1Default">
+    <NuxtLink :to="`/gamesdet/${game.id}`" v-if="game.id">
+      <div class="Property1Default">
         <div class="Videocontainer">
-            <div class="Labelsdiv">
-                <Genero />
-            </div>
-            <div class="Img">
-                <img class="Image59" :src="gameImage" />
-            </div>
+          <div class="Labelsdiv">
+            <Genero />
+          </div>
+          <div class="Img">
+            <img class="Image59" :src="game.background_image" alt="Game Image" />
+          </div>
         </div>
         <div class="Textcontainer">
-            <div class="Textdiv">
-                <div class="CameraGames h4">{{ gameTitle }}</div>
-                <div class="NewRelease sec-text">New release</div>
-                <div class="Description">{{ gameDescription }}</div>
-            </div>
-            <div class="Bttdiv">
-                <Button buttonText="13,95€" />
-                <ButtonGris :showIcon="true" IconName="line-md:plus" />
-                <ButtonGris :showIcon="true" IconName="line-md:plus" />
-            </div>
+          <div class="Textdiv">
+            <div class="CameraGames h4">{{ game.name }}</div>
+            <div class="NewRelease sec-text">New release</div>
+            <div class="Description">{{ game.description }}</div>
+          </div>
+          <div class="Bttdiv">
+            <Button buttonText="13,95€" />
+            <ButtonGris :showIcon="true" IconName="ic:outline-local-mall" />
+            <ButtonGris :showIcon="true" IconName="line-md:heart" />
+          </div>
         </div>
+      </div>
+    </NuxtLink>
+    <div v-else>
+      <p>Loading...</p>
     </div>
-</template>
-
-<script>
-import axios from 'axios';
-import Button from '../components/Button.vue';
-import ButtonGris from '../components/ButtonGris.vue';
-
-
-const apiKey = '9a49841e50b64aeaafa0b18bee4b2e30'; // Replace with your RAWG API key
-
-export default {
+  </template>
+  
+  <script>
+  import axios from 'axios';
+  import Button from '../components/Button.vue';
+  import ButtonGris from '../components/ButtonGris.vue';
+  import Genero from '../components/Genero.vue';
+  
+  const apiKey = '9a49841e50b64aeaafa0b18bee4b2e30'; // Replace with your RAWG API key
+  
+  export default {
     name: 'ApiCard',
     components: {
-        Button,
-        ButtonGris
+      Button,
+      ButtonGris,
+      Genero
     },
     data() {
-        return {
-            gameImage: '',
-            gameTitle: '',
-            gameDescription: ''
-        };
+      return {
+        game: {}
+      };
     },
     async mounted() {
-        await this.fetchRandomGame();
+      await this.fetchRandomGame();
     },
     methods: {
-        async fetchRandomGame() {
-            const apiUrl = `https://api.rawg.io/api/games?key=${apiKey}&page_size=50`; // Fetch a list of 50 games
-
-            try {
-                const response = await axios.get(apiUrl);
-                const games = response.data.results;
-
-                const randomGame = games[Math.floor(Math.random() * games.length)];
-
-                // Fetch the detailed game data including description and genres
-                const gameDetailsUrl = `https://api.rawg.io/api/games/${randomGame.id}?key=${apiKey}`;
-                const gameDetailsResponse = await axios.get(gameDetailsUrl);
-
-                this.gameImage = randomGame.background_image;
-                this.gameTitle = randomGame.name;
-                this.gameDescription = gameDetailsResponse.data.description_raw || 'No description available';
-            } catch (error) {
-                console.error('Error fetching game data:', error);
-            }
-        },
+      async fetchRandomGame() {
+        const apiUrl = `https://api.rawg.io/api/games?key=${apiKey}&page_size=50`; // Fetch a list of 50 games
+  
+        try {
+          const response = await axios.get(apiUrl);
+          const games = response.data.results;
+  
+          const randomGame = games[Math.floor(Math.random() * games.length)];
+  
+          // Fetch the detailed game data including description and genres
+          const gameDetailsUrl = `https://api.rawg.io/api/games/${randomGame.id}?key=${apiKey}`;
+          const gameDetailsResponse = await axios.get(gameDetailsUrl);
+  
+          this.game = {
+            id: randomGame.id,
+            background_image: randomGame.background_image,
+            name: randomGame.name,
+            description: gameDetailsResponse.data.description_raw || 'No description available'
+          };
+        } catch (error) {
+          console.error('Error fetching game data:', error);
+        }
+      },
     }
-};
-</script>
-
-<style scoped>
+  };
+  </script>
+  
+  <style scoped>
 .Property1Default {
     width: 398px;
     height: 820px;

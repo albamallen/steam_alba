@@ -1,6 +1,6 @@
 <template>
   <div>
-    <HeaderTitulo title="Tienda" />
+    <HeaderTitulo title="Soporte" />
     <p>
       Soporte
     </p>

@@ -3,6 +3,7 @@
   <div>
     <SwiperComponent />
     <CardGame />
+    <HeaderSubtitulo HeadingText="Juegos destacados" :showButton="false" :showPuntos="false"/>
     <div class="cards"><SingleCardGame /><SingleCardGame /><SingleCardGame /><SingleCardGame /><SingleCardGame /><SingleCardGame /><SingleCardGame /><SingleCardGame /></div>
   </div>
 </template>
