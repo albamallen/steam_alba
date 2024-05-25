@@ -19,5 +19,12 @@ export default defineNuxtConfig({
   ],
   build: {
     transpile: ['swiper']
-  }
+  },
+  routeRules: { 
+    '/web/v1/**': { 
+        proxy: { 
+          to: "http://localhost:9300/web/v1/**"
+        }, 
+    } 
+  },
 })

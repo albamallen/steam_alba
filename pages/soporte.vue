@@ -1,7 +1,8 @@
 <template>
-    <div>
-        <p>
-        Soporte
-      </p>
-    </div>
+  <div>
+    <HeaderTitulo title="Tienda" />
+    <p>
+      Soporte
+    </p>
+  </div>
 </template>

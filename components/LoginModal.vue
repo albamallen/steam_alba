@@ -167,20 +167,18 @@ export default {
     <div class="modal-wrapper">
       <div class="modal-content">
         <button class="close-button" @click="closeModal">×</button>
-        <h2 class="modal-title">Inicia sesión en Steam</h2>
+        <h2 class="modal-title h2">Inicia sesión en Steam</h2>
         <div class="form-group">
-          <label for="username">Usuario</label>
-          <input type="text" id="username" v-model="username" placeholder="Usuario">
+          <input class="sec-p" type="text" id="username" v-model="username" placeholder="Usuario">
         </div>
         <div class="form-group">
-          <label for="password">Password</label>
           <input type="password" id="password" v-model="password" placeholder="Password">
         </div>
         <div class="button-group">
-          <button @click="login" class="primary-button">Login</button>
+          <Button buttonText="Login" />
         </div>
         <div class="button-group">
-          <button @click="createAccount" class="secondary-button">Crear cuenta</button>
+          <ButtonGris :showText="true" buttonText="Crear cuenta"/>
         </div>
       </div>
     </div>
@@ -188,7 +186,13 @@ export default {
 </template>
 
 <script>
+import Button from '../components/Button.vue';
+import ButtonGris from '../components/ButtonGris.vue';
 export default {
+  components: {
+    Button,
+    ButtonGris
+  },
   data() {
     return {
       username: '',
@@ -255,9 +259,6 @@ export default {
 .modal-title {
   text-align: center;
   color: #151615;
-  font-size: 28px;
-  font-family: Neue Haas Grotesk Text Pro;
-  font-weight: 500;
 }
 
 .form-group {
@@ -274,8 +275,8 @@ label {
 
 input {
   padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  border-bottom: 1px solid var(--100);
+
 }
 
 .button-group {
