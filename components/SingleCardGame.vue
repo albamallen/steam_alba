@@ -13,7 +13,7 @@
           <div class="Textdiv">
             <div class="CameraGames h4">{{ game.name }}</div>
             <div class="NewRelease sec-text">New release</div>
-            <div class="Description">{{ game.description }}</div>
+            <div class="Description" ref="description">{{ game.description }}</div>
           </div>
           <div class="Bttdiv">
             <Button buttonText="13,95€" />
@@ -71,16 +71,31 @@
             name: randomGame.name,
             description: gameDetailsResponse.data.description_raw || 'No description available'
           };
+          
+          // Adjust description height after content is loaded
+          this.$nextTick(() => {
+            this.limitDescriptionHeight();
+          });
         } catch (error) {
           console.error('Error fetching game data:', error);
         }
       },
+      limitDescriptionHeight() {
+        const descriptionElement = this.$refs.description;
+        const lineHeight = parseInt(window.getComputedStyle(descriptionElement).lineHeight);
+        const maxHeight = lineHeight * 6; // Limit to six lines
+  
+        if (descriptionElement.clientHeight > maxHeight) {
+          descriptionElement.style.maxHeight = `${maxHeight}px`;
+          descriptionElement.style.overflow = 'hidden';
+        }
+      }
     }
   };
   </script>
   
   <style scoped>
-.Property1Default {
+  .Property1Default {
     width: 398px;
     height: 820px;
     padding: 30px;
@@ -91,9 +106,9 @@
     justify-content: flex-start;
     align-items: center;
     gap: 20px;
-}
-
-.Videocontainer {
+  }
+  
+  .Videocontainer {
     align-self: stretch;
     height: 363px;
     display: flex;
@@ -101,26 +116,17 @@
     justify-content: flex-start;
     align-items: flex-start;
     gap: 20px;
-}
-
-.Labelsdiv {
+  }
+  
+  .Labelsdiv {
     height: 29px;
     display: inline-flex;
     justify-content: flex-start;
     align-items: flex-start;
     gap: 10px;
-}
-
-.BttLabel {
-    padding: 5px;
-    background: white;
-    color: #151615;
-    font-size: 16px;
-    font-family: SF Mono;
-    font-weight: 400;
-}
-
-.Img {
+  }
+  
+  .Img {
     align-self: stretch;
     height: 314px;
     border-radius: 22px;
@@ -128,17 +134,17 @@
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.Image59 {
+  }
+  
+  .Image59 {
     align-self: stretch;
     width: 100%;
     height: 100%;
     object-fit: cover;
     /* Evita que la imagen se deforme */
-}
-
-.Textcontainer {
+  }
+  
+  .Textcontainer {
     align-self: stretch;
     height: 400px;
     display: flex;
@@ -146,101 +152,51 @@
     justify-content: flex-start;
     align-items: flex-start;
     gap: 71px;
-}
-
-.Textdiv {
+  }
+  
+  .Textdiv {
     align-self: stretch;
     height: 250px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;
-}
-
-.CameraGames {
+  }
+  
+  .NewRelease {
+    align-self: stretch;
+  }
+  
+  .CameraGames {
     width: 336px;
     color: #fdfdfd;
     font-family: Roboto;
     font-size: 22px;
     font-weight: 400;
-}
-
-.NewRelease {
-    align-self: stretch;
-}
-
-.Description {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    margin-bottom: 10px;
+  }
+  
+  .Description {
     align-self: stretch;
     color: #fdfdfd;
     word-wrap: break-word;
-    display: -webkit-box;
-    -webkit-line-clamp: 6;
-    -webkit-box-orient: vertical;
     overflow: hidden;
-    text-overflow: ellipsis;
-}
+    margin-bottom: 20px;
+    -webkit-line-clamp: 2;
 
-
-.Bttdiv {
+  }
+  
+  .Bttdiv {
     justify-content: center;
     align-items: center;
     gap: 20px;
     display: inline-flex;
-}
-
-.BttPrimary {
-    padding: 10px 20px;
-    background: #00ff03;
-    border-radius: 45px;
-    color: #151615;
-    font-size: 30px;
-    font-family: Neue Haas Grotesk Text Pro;
-    font-weight: 500;
-}
-
-.BttIcons,
-.BttIconLikeSmall {
-    width: 59px;
-    height: 59px;
-    padding: 2.92px 5.84px;
-    background: #d5d5d5;
-    border-radius: 40.71px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.Icons {
-    width: 47.32px;
-    height: 53.16px;
-    position: relative;
-}
-
-.LocalMall .BoundingBox,
-.Favorite .BoundingBox {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    background: #d9d9d9;
-}
-
-.LocalMall .LocalMall,
-.Favorite .Favorite {
-    position: absolute;
-    background: #151615;
-}
-
-.LocalMall .LocalMall {
-    width: 36.47px;
-    height: 40.97px;
-    left: 5.86px;
-    top: 5.95px;
-}
-
-.Favorite .Favorite {
-    width: 39.21px;
-    height: 44.05px;
-    left: 3.76px;
-    top: 3.90px;
-}
+  }
 </style>
+
+  

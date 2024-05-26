@@ -13,7 +13,7 @@
                                 <div class="Description" v-html="data.description"></div>
                             </div>
                             <div class="Frame176">
-                                <div class="Bttdiv align-end"> <!-- Aquí agregamos la clase align-end -->
+                                <div class="Bttdiv align-end">
                                     <Button buttonText="13,95€" />
                                 </div>
                                 <div class="BttIconLikeSmall">
@@ -77,7 +77,7 @@ onMounted(fetchGameData);
     align-items: center;
     gap: 119px;
     display: inline-flex;
-    margin-left: 4rem;
+    padding-left: 4rem;
 }
 
 .Frame191 {
@@ -88,7 +88,7 @@ onMounted(fetchGameData);
 
 .Image86 {
     width: 750px;
-    /* Se establece altura automática para adaptarse a la descripción */
+
     border-radius: 68px;
     object-fit: cover;
 }
@@ -104,7 +104,6 @@ onMounted(fetchGameData);
 
 .Frame188 {
     align-self: stretch;
-    height: 446px;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
@@ -118,18 +117,6 @@ onMounted(fetchGameData);
     justify-content: space-between;
     align-items: flex-start;
     display: flex;
-}
-
-.BttLabel {
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    background: white;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 10px;
-    display: inline-flex;
 }
 
 .Label {
@@ -149,7 +136,6 @@ onMounted(fetchGameData);
 }
 
 .Description {
-    /* align-self: stretch; */
     color: #151615;
     font-size: 18px;
     font-family: Neue Haas Grotesk Text Pro;
@@ -163,58 +149,15 @@ onMounted(fetchGameData);
     display: inline-flex;
 }
 
-/* Estilos para la clase align-end */
 .align-end {
     justify-content: flex-end;
-}
-
-.BttPrimary {
-    padding-left: 20px;
-    padding-right: 20px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    background: #00FF03;
-    border-radius: 45px;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-}
-
-.Normal {
-    color: #151615;
-    font-size: 30px;
-    font-family: Neue Haas Grotesk Text Pro;
-    font-weight: 500;
-    word-wrap: break-word;
 }
 
 .BttIconLikeSmall {
     justify-content: center;
     align-items: center;
     display: flex;
+    gap: 2rem;
 }
 
-.Icons {
-    width: 20.74px;
-    height: 20.74px;
-    position: relative;
-}
-
-.BoundingBox {
-    width: 20.74px;
-    height: 20.74px;
-    left: 0px;
-    top: 0px;
-    position: absolute;
-    background: #D9D9D9;
-}
-
-.Favorite {
-    width: 15.46px;
-    height: 14.42px;
-    left: 0.86px;
-    top: 1.25px;
-    position: absolute;
-    background: #151615;
-}
 </style>

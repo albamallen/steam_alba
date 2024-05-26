@@ -1,9 +1,9 @@
-<template>
+<!-- <template>
     <div class="CardjuegoCategoria">
-      <div class="Modalcrearcuenta">
+      <div class="card">
         <div class="Videocontainer">
           <div class="Img">
-            <img class="Image59" :src="gameImage" :alt="gameTitle" />
+            <img class="Image" :src="gameImage" :alt="gameTitle" />
             <div class="BttPrimary">
               <Button :buttonText="botonTexto" />
             </div>
@@ -60,12 +60,82 @@
       Button // Registra el componente de botón personalizado
     }
   };
-  </script>
+  </script> -->
   
-  <style scoped>
-  /* Estilos de tu componente CardTipo */
-  </style>
-  
+  <template>
+  <div class="CardjuegoCategoria">
+    <nuxt-link :to="{ name: 'tiendaJuegoGenero', params: { genreId: genreId, genreName: botonTexto } }">
+      <div class="card">
+        <div class="Videocontainer">
+          <div class="Img">
+            <img class="Image" :src="gameImage" :alt="gameTitle" />
+            <div class="BttPrimary">
+              <Button :buttonText="botonTexto" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </nuxt-link>
+  </div>
+</template>
+
+<script>
+import axios from 'axios';
+import Button from '@/components/Button.vue'; // Importa tu componente de botón personalizado
+
+export default {
+  name: 'CardTipo',
+  props: {
+    botonTexto: {
+      type: String,
+      default: 'Género' // Texto por defecto para el botón
+    },
+    genreId: {
+      type: String,
+      required: true // El ID del género
+    }
+  },
+  data() {
+    return {
+      gameImage: '',
+      gameTitle: ''
+    };
+  },
+  async mounted() {
+    await this.fetchRandomGame();
+  },
+  methods: {
+    async fetchRandomGame() {
+      const apiKey = '9a49841e50b64aeaafa0b18bee4b2e30'; // Reemplaza con tu clave de la API de RAWG
+      const apiUrl = `https://api.rawg.io/api/games?key=${apiKey}&page_size=50`; // Obtener una lista de 50 juegos
+
+      try {
+        const response = await axios.get(apiUrl);
+        const games = response.data.results;
+
+        const randomGame = games[Math.floor(Math.random() * games.length)];
+
+        // Obtener los detalles del juego, incluida la imagen y el título
+        const gameDetailsUrl = `https://api.rawg.io/api/games/${randomGame.id}?key=${apiKey}`;
+        const gameDetailsResponse = await axios.get(gameDetailsUrl);
+
+        this.gameImage = randomGame.background_image;
+        this.gameTitle = randomGame.name;
+      } catch (error) {
+        console.error('Error al obtener los datos del juego:', error);
+      }
+    }
+  },
+  components: {
+    Button // Registra el componente de botón personalizado
+  }
+};
+</script>
+
+<style scoped>
+/* Estilos de tu componente CardTipo */
+</style>
+
 
   <style scoped>
   .CardjuegoCategoria {
@@ -78,8 +148,9 @@
     display: inline-flex;
   }
   
-  .Modalcrearcuenta {
+  .card {
     align-self: stretch;
+    width: 500px;
     height: 332px;
     padding: 30px;
     background: #fdfdfd;
@@ -115,7 +186,7 @@
     position: relative; /* Para que el botón esté posicionado correctamente */
   }
   
-  .Image59 {
+  .Image {
     align-self: stretch;
     width: 100%;
     height: 100%;
@@ -131,14 +202,6 @@
     justify-content: center;
     align-items: center;
     display: inline-flex;
-  }
-  
-  .Normal {
-    color: #151615;
-    font-size: 30px;
-    font-family: 'Neue Haas Grotesk Text Pro', sans-serif;
-    font-weight: 500;
-    word-wrap: break-word;
   }
   </style>
   

@@ -25,8 +25,12 @@ export default {
 <style>
 .cards{
   margin-left: 80px;
+  margin-right: 20px;
   gap: 40px;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
+  overflow-x: auto;
+  width: calc(100% - 100px);
+  white-space: nowrap;
 }
 </style>

@@ -139,13 +139,6 @@ export default {
   gap: 10px;
   margin-top: 6rem;
 }
-.label {
-  color: #151615;
-  font-size: 16px;
-  font-family: 'DM Mono', monospace;
-  font-weight: 400;
-  word-wrap: break-word;
-}
 .text-container {
   width: 398px;
   display: flex;
@@ -187,42 +180,5 @@ export default {
   justify-content: center;
   align-items: center;
   gap: 20px;
-}
-.btt-primary {
-  padding: 10px 20px;
-  background: var(--primary);
-  border-radius: 45px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.btt-icon-search {
-  width: 59px;
-  height: 59px;
-  padding: 5.9px 11.8px;
-  background: #d5d5d5;
-  border-radius: 40.71px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.icons {
-  width: 30.62px;
-  height: 30.62px;
-  position: relative;
-}
-.bounding-box {
-  width: 30.62px;
-  height: 30.62px;
-  background: #d9d9d9;
-  position: absolute;
-}
-.search {
-  width: 24.6px;
-  height: 24.57px;
-  background: #151615;
-  position: absolute;
-  left: 3.01px;
-  top: 3.02px;
 }
 </style>
