@@ -278,7 +278,7 @@
     left: 2.04px;
     top: 2.05px;
     position: absolute;
-    background: #151615;
+    background: var(--100);
   }
   </style>
   

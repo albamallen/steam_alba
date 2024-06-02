@@ -30,7 +30,7 @@ export default {
         },
         IconColor: {
             type: String,
-            default: 'black'
+            default: 'var(--100)'
         },
         IconName: {
             type: String,
@@ -70,6 +70,6 @@ button:hover {
 
 button.active {
     background-color: transparent;
-    border: 2px solid black;
+    border: 2px solid var(--100);
 }
 </style>

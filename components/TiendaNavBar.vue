@@ -50,26 +50,26 @@ export default {
 }
 
 .link {
-    color: #151615;
+    color: var(--100);
     text-decoration: none;
     transition: color 0.3s, background-color 0.3s;
-    color: #000;
-    background-color: #ffff;
+    color: var(--100);
+    background-color: var(--700);
     border-radius: 41px;
     padding: .25rem 1rem;
 }
 
 .link:hover {
-    color: #ffffff;
-    background-color: #000000;
+    color: var(--700);
+    background-color: var(--100);
     border-radius: 41px;
     padding: .25rem 1rem;
 }
 
 .active {
-    background: #00FF03;
+    background: var(--primary);
     border-radius: 41px;
-    border: 1px #00FF03 solid;
+    border: 1px var(--primary) solid;
     padding: .25rem 1rem;
 }
 </style>

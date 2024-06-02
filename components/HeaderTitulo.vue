@@ -31,7 +31,7 @@
   
   .Titulo {
     width: 502px;
-    color: #151615;
+    color: var(--100);
     font-size: 40px;
     font-family: Neue Haas Grotesk Text Pro;
     font-weight: 500;
@@ -83,7 +83,7 @@
     left: 5.10px;
     top: 5.13px;
     position: absolute;
-    background: #151615;
+    background: var(--100);
   }
   </style>
   

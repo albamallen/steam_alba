@@ -72,9 +72,9 @@ export default {
 }
 
 .modal-wrapper {
-  background: #FDFDFD;
+  background: var(--700);
   border-radius: 15px;
-  border: 2px black solid;
+  border: 2px var(--100) solid;
   padding: 40px;
 }
 
@@ -94,7 +94,7 @@ export default {
 
 .modal-title {
   text-align: center;
-  color: #151615;
+  color: var(--100);
 }
 
 .form-group {
@@ -103,7 +103,7 @@ export default {
 }
 
 label {
-  color: #6C6C6C;
+  color: var(--300);
   font-size: 16px;
   font-family: SF Mono;
   font-weight: 400;
@@ -121,8 +121,8 @@ input {
 }
 
 .primary-button {
-  background: #00FF03;
-  color: #151615;
+  background: var(--primary);
+  color: var(--100);
   border: none;
   border-radius: 45px;
   padding: 10px 30px;
@@ -130,8 +130,8 @@ input {
 }
 
 .secondary-button {
-  background: #E6E6E6;
-  color: #6C6C6C;
+  background: var(--700);
+  color: var(--300);
   border: none;
   border-radius: 41px;
   padding: 10px 30px;

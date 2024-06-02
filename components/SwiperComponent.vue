@@ -8,10 +8,13 @@
         <div class="overlay">
           <div class="text-container">
             <h1>{{ slide.title }}</h1>
-            <Genero />
+            <div class="btt-genero" v-if="gameGenre">
+              <div class="genero sec-p">{{ game.genre }}</div>
+            </div>
             <div class="buttons">
               <Button buttonText="13,95€" />
               <ButtonGris :showIcon="true" IconName="ic:outline-local-mall" />
+              <ButtonGris :showIcon="true" IconName="line-md:heart" />
             </div>
           </div>
         </div>
@@ -21,48 +24,25 @@
 </template>
 
 <script>
-import axios from 'axios';
-import SwiperCore, { Navigation, Pagination } from 'swiper/core';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import 'swiper/swiper-bundle.css';
 import Button from '../components/Button.vue';
 import ButtonGris from '../components/ButtonGris.vue';
-
-SwiperCore.use([Navigation, Pagination]);
-
-const apiKey = '9a49841e50b64aeaafa0b18bee4b2e30';
+import Genero from '../components/Genero.vue';
 
 export default {
   components: {
     Swiper,
     SwiperSlide,
     Button,
-    ButtonGris
+    ButtonGris,
+    Genero
   },
-  data() {
-    return {
-      slides: []
-    };
-  },
-  async mounted() {
-    await this.fetchGames();
-  },
-  methods: {
-    async fetchGames() {
-      const apiUrl = `https://api.rawg.io/api/games?key=${apiKey}&page_size=10`;
-
-      try {
-        const response = await axios.get(apiUrl);
-        const games = response.data.results;
-
-        this.slides = games.map(game => ({
-          image: game.background_image,
-          title: game.name,
-        }));
-      } catch (error) {
-        console.error('Error fetching games data:', error);
-      }
-    },
+  props: {
+    slides: {
+      type: Array,
+      required: true
+    }
   }
 };
 </script>
@@ -103,7 +83,7 @@ export default {
   background-color: rgba(128, 128, 128, 0.5);
   padding: 20px 60px;
   box-sizing: border-box;
-  color: white;
+  color: var(--700);
   border-radius: 40px;
 }
 
@@ -111,6 +91,23 @@ export default {
   margin-top: 20px;
   display: flex;
   flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+.genero {
+    color: var(--100);
+    word-wrap: break-word;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  }
+  .btt-genero {
+  padding: 5px 10px;
+  background: var(--700);
+  display: flex;
+  justify-content: flex-start;
   align-items: center;
   gap: 10px;
 }

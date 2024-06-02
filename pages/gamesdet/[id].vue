@@ -8,7 +8,9 @@
                     <div class="Textcontainer">
                         <div class="Frame188">
                             <div class="Textdiv">
-                                <Genero />
+                                <div class="btt-genero" v-if="gameGenre">
+                                    <div class="genero sec-p">{{ game.genre }}</div>
+                                </div>
                                 <div class="NombreDelJuego">{{ data.name }}</div>
                                 <div class="Description" v-html="data.description"></div>
                             </div>
@@ -39,7 +41,6 @@
 import { ref, onMounted } from 'vue';
 import axios from 'axios';
 import { useRoute } from 'vue-router';
-import Genero from '../components/Genero.vue';
 import Button from '../components/Button.vue';
 import ButtonGris from '../components/ButtonGris.vue';
 
@@ -54,7 +55,7 @@ const getDescriptionWidth = () => {
 };
 
 const fetchGameData = async () => {
-    const apiKey = '9a49841e50b64aeaafa0b18bee4b2e30';
+    const apiKey = '6ef278bbca324856844d239c28a65278';
     const gameId = route.params.id;
 
     try {
@@ -158,6 +159,23 @@ onMounted(fetchGameData);
     align-items: center;
     display: flex;
     gap: 2rem;
+}
+
+.genero {
+    color: var(--100);
+    word-wrap: break-word;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  }
+  .btt-genero {
+  padding: 5px 10px;
+  background: var(--700);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
 }
 
 </style>

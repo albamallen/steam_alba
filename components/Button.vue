@@ -28,7 +28,7 @@ export default {
 <style scoped>
 button {
   background-color: var(--primary);
-  color: black;
+  color: var(--100);
   padding: 10px 20px;
   border: none;
   border-radius: 50px;
@@ -39,11 +39,11 @@ button {
 
 button:hover {
   background-color: var(--primary);
-  border: 2px solid black;
+  border: 2px solid var(--100);
 }
 
 button.active {
   background-color: transparent;
-  border: 2px solid black;
+  border: 2px solid var(--100);
 }
 </style>

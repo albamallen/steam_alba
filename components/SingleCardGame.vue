@@ -1,9 +1,11 @@
-<template>
+   <template>
     <NuxtLink :to="`/gamesdet/${game.id}`" v-if="game.id">
       <div class="Property1Default">
         <div class="Videocontainer">
           <div class="Labelsdiv">
-            <Genero />
+            <div class="btt-genero" v-if="gameGenre">
+              <div class="genero sec-p">{{ game.genre }}</div>
+            </div>
           </div>
           <div class="Img">
             <img class="Image59" :src="game.background_image" alt="Game Image" />
@@ -29,61 +31,38 @@
   </template>
   
   <script>
-  import axios from 'axios';
   import Button from '../components/Button.vue';
   import ButtonGris from '../components/ButtonGris.vue';
   import Genero from '../components/Genero.vue';
   
-  const apiKey = '9a49841e50b64aeaafa0b18bee4b2e30'; // Replace with your RAWG API key
-  
   export default {
-    name: 'ApiCard',
+    name: 'SingleCardGame',
+    props: {
+      game: {
+        type: Object,
+        required: true
+      }
+    },
     components: {
       Button,
       ButtonGris,
       Genero
     },
-    data() {
-      return {
-        game: {}
-      };
+    computed: {
+      gameGenre() {
+        return this.game.genre ? this.game.genre : 'Unknown Genre';
+      }
     },
-    async mounted() {
-      await this.fetchRandomGame();
+    mounted() {
+      this.$nextTick(() => {
+        this.limitDescriptionHeight();
+      });
     },
     methods: {
-      async fetchRandomGame() {
-        const apiUrl = `https://api.rawg.io/api/games?key=${apiKey}&page_size=50`; // Fetch a list of 50 games
-  
-        try {
-          const response = await axios.get(apiUrl);
-          const games = response.data.results;
-  
-          const randomGame = games[Math.floor(Math.random() * games.length)];
-  
-          // Fetch the detailed game data including description and genres
-          const gameDetailsUrl = `https://api.rawg.io/api/games/${randomGame.id}?key=${apiKey}`;
-          const gameDetailsResponse = await axios.get(gameDetailsUrl);
-  
-          this.game = {
-            id: randomGame.id,
-            background_image: randomGame.background_image,
-            name: randomGame.name,
-            description: gameDetailsResponse.data.description_raw || 'No description available'
-          };
-          
-          // Adjust description height after content is loaded
-          this.$nextTick(() => {
-            this.limitDescriptionHeight();
-          });
-        } catch (error) {
-          console.error('Error fetching game data:', error);
-        }
-      },
       limitDescriptionHeight() {
         const descriptionElement = this.$refs.description;
         const lineHeight = parseInt(window.getComputedStyle(descriptionElement).lineHeight);
-        const maxHeight = lineHeight * 6; // Limit to six lines
+        const maxHeight = lineHeight * 6;
   
         if (descriptionElement.clientHeight > maxHeight) {
           descriptionElement.style.maxHeight = `${maxHeight}px`;
@@ -99,7 +78,7 @@
     width: 398px;
     height: 820px;
     padding: 30px;
-    background: #151615;
+    background: var(--100);
     border-radius: 20px;
     display: inline-flex;
     flex-direction: column;
@@ -141,7 +120,6 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    /* Evita que la imagen se deforme */
   }
   
   .Textcontainer {
@@ -169,7 +147,7 @@
   
   .CameraGames {
     width: 336px;
-    color: #fdfdfd;
+    color: var(--700);
     font-family: Roboto;
     font-size: 22px;
     font-weight: 400;
@@ -183,12 +161,11 @@
   
   .Description {
     align-self: stretch;
-    color: #fdfdfd;
+    color: var(--700);
     word-wrap: break-word;
     overflow: hidden;
     margin-bottom: 20px;
     -webkit-line-clamp: 2;
-
   }
   
   .Bttdiv {
@@ -197,6 +174,22 @@
     gap: 20px;
     display: inline-flex;
   }
-</style>
 
+  .genero {
+    color: var(--100);
+    word-wrap: break-word;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  }
+  .btt-genero {
+  padding: 5px 10px;
+  background: var(--700);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+}
+  </style>
   

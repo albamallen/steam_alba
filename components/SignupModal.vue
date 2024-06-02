@@ -129,7 +129,7 @@
     width: calc(100% - 20px);
     margin: 10px;
     padding: 10px 0;
-    background-color: #00FF03;
+    background-color: var(--primary);
     color: #000;
     border: none;
     border-radius: 50px;
@@ -140,7 +140,7 @@
     width: calc(100% - 20px);
     margin: 10px;
     padding: 10px 0;
-    background-color: #E6E6E6;
+    background-color: var(--700);
     color: #000;
     border: none;
     border-radius: 50px;

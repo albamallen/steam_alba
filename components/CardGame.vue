@@ -1,95 +1,83 @@
 <template>
-  <NuxtLink :to="`/gamesdet/${gameId}`">
+  <NuxtLink :to="`/gamesdet/${game.id}`" v-if="game.id">
     <div class="frame">
       <div class="modal-juego">
         <div class="video-container">
           <div class="image-container">
-            <img :src="gameImage" alt="Game Image"/>
+            <img :src="game.background_image" alt="Game Image"/>
           </div>
           <div class="labels-div">
-              <Genero />
+            <div class="btt-genero" v-if="gameGenre">
+              <div class="genero sec-p">{{ game.genre }}</div>
+            </div>
           </div>
         </div>
         <div class="text-container">
           <div class="text-div">
-            <div class="nombre-del-juego h3">{{ gameTitle }}</div>
+            <div class="nombre-del-juego h3">{{ game.name }}</div>
             <div class="new-release sec-text">New release</div>
-            <div class="description h5">
-              {{ gameDescription }}
-            </div>
+            <div class="description h5" ref="description">{{ game.description }}</div>
           </div>
           <div class="btt-div">
-            <Button buttonText="13,95€" />
+            <Button :buttonText="buttonText" />
             <ButtonGris :showIcon="true" IconName="ic:outline-local-mall"/>
+            <ButtonGris :showIcon="true" IconName="line-md:heart" />
           </div>
         </div>
       </div>
     </div>
   </NuxtLink>
+  <div v-else>
+    <p>Loading...</p>
+  </div>
 </template>
 
 <script>
-import axios from 'axios';
 import Button from '../components/Button.vue';
 import ButtonGris from '../components/ButtonGris.vue';
 import Genero from '../components/Genero.vue';
 
-const apiKey = '9a49841e50b64aeaafa0b18bee4b2e30'; // Replace with your RAWG API key
-
 export default {
   name: 'ModalJuego',
+  props: {
+    game: {
+      type: Object,
+      required: true
+    },
+    buttonText: {
+            type: String,
+            default: '13,95'
+        },
+  },
   components: {
     Button,
     ButtonGris,
     Genero
   },
-  data() {
-    return {
-      gameImage: '',
-      gameTitle: '',
-      gameDescription: '',
-      gameId: null,
-      usedIds: new Set(),
-    };
+  computed: {
+    gameGenre() {
+      return this.game.genres ? this.game.genres : 'Unknown Genre';
+    }
   },
-  async mounted() {
-    await this.fetchRandomGame();
+  mounted() {
+    this.$nextTick(() => {
+      this.limitDescriptionHeight();
+    });
   },
   methods: {
-    async fetchRandomGame() {
-      const apiUrl = `https://api.rawg.io/api/games?key=${apiKey}&page_size=50`; // Fetch a list of 50 games
+    limitDescriptionHeight() {
+      const descriptionElement = this.$refs.description;
+      const lineHeight = parseInt(window.getComputedStyle(descriptionElement).lineHeight);
+      const maxHeight = lineHeight * 6;
 
-      try {
-        const response = await axios.get(apiUrl);
-        const games = response.data.results;
-
-        let randomGame;
-        do {
-          randomGame = games[Math.floor(Math.random() * games.length)];
-        } while (this.usedIds.has(randomGame.id) && this.usedIds.size < games.length);
-
-        this.usedIds.add(randomGame.id);
-
-        this.gameId = randomGame.id;
-        this.gameImage = randomGame.background_image;
-        this.gameTitle = randomGame.name;
-
-        // Fetch the detailed game data including description and genres
-        const gameDetailsUrl = `https://api.rawg.io/api/games/${randomGame.id}?key=${apiKey}`;
-        const gameDetailsResponse = await axios.get(gameDetailsUrl);
-        this.gameDescription = gameDetailsResponse.data.description_raw || 'No description available';
-
-        // Extract genres
-        const genres = gameDetailsResponse.data.genres.map(genre => genre.name).join(', ');
-        this.gameGenre = genres || 'No genre available';
-      } catch (error) {
-        console.error('Error fetching game data:', error);
+      if (descriptionElement.clientHeight > maxHeight) {
+        descriptionElement.style.maxHeight = `${maxHeight}px`;
+        descriptionElement.style.overflow = 'hidden';
       }
-    },
+    }
   }
 };
 </script>
-
 
 <style scoped>
 .frame {
@@ -104,7 +92,7 @@ export default {
 .modal-juego {
   width: 1348px;
   padding: 60px;
-  background: #151615;
+  background: var(--100);
   border-radius: 20px;
   display: flex;
   justify-content: center;
@@ -157,7 +145,7 @@ export default {
 }
 .nombre-del-juego {
   width: 336px;
-  color: #fdfdfd;
+  color: var(--700);
   word-wrap: break-word;
   font-family: Roboto;
   font-size: 30px;
@@ -167,7 +155,7 @@ export default {
   word-wrap: break-word;
 }
 .description {
-  color: #fdfdfd;
+  color: var(--700);
   word-wrap: break-word;
   display: -webkit-box;
   -webkit-line-clamp: 6;
@@ -180,5 +168,22 @@ export default {
   justify-content: center;
   align-items: center;
   gap: 20px;
+}
+
+.genero {
+    color: var(--100);
+    word-wrap: break-word;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  }
+  .btt-genero {
+  padding: 5px 10px;
+  background: var(--700);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
 }
 </style>

@@ -1,5 +1,4 @@
 <template>
-
   <div class="navbar">
     <div class="property-wrapper">
       <div class="logo">
@@ -10,14 +9,10 @@
       <div class="navbar-text">
         <div class="right-nav">
           <div class="button-container">
-            <NuxtLink to="/tienda"
-              :class="{ 'nav-link': $route.path !== '/pagina1', 'nav-link-bold': $route.path === '/pagina1' }">Tienda
-            </NuxtLink>
+            <NuxtLink to="/tienda" :class="{ 'nav-link': $route.path !== '/pagina1', 'nav-link-bold': $route.path === '/pagina1' }">Tienda</NuxtLink>
           </div>
           <div class="button-container">
-            <NuxtLink to="/soporte"
-              :class="{ 'nav-link': $route.path !== '/pagina1', 'nav-link-bold': $route.path === '/pagina1' }">Soporte
-            </NuxtLink>
+            <NuxtLink to="/soporte" :class="{ 'nav-link': $route.path !== '/pagina1', 'nav-link-bold': $route.path === '/pagina1' }">Soporte</NuxtLink>
           </div>
         </div>
         <div class="left-nav">
@@ -27,9 +22,13 @@
           <div class="button-container">
             <div class="button" @click="openLoginModal">Inicia sesión</div>
           </div>
+          <ButtonGris :showIcon="true" IconName="ic:outline-local-mall" @click="toggleCarrito"/>
+          <ButtonGris :showIcon="true" IconName="line-md:account"/>
         </div>
         <!-- Modal de inicio de sesión -->
         <LoginModal v-if="showLoginModal" @close="closeLoginModal" />
+        <!-- Modal del carrito -->
+        <CarritoCompra :isVisible="showCarrito" @close="toggleCarrito"/>
       </div>
     </div>
   </div>
@@ -38,40 +37,32 @@
 <script>
 import LoginModal from '~/components/LoginModal.vue'; // Importa el componente modal de inicio de sesión
 import Button from '../components/Button.vue';
+import ButtonGris from '../components/ButtonGris.vue';
+import CarritoCompra from '../components/CarritoCompra.vue'; // Importa el componente CarritoCompra
 
 export default {
   data() {
     return {
-      showLoginModal: false
+      showLoginModal: false,
+      showCarrito: false
     };
   },
   methods: {
-    goToStore() {
-      // Implementa la lógica para ir a la tienda
-      console.log('Ir a la tienda');
-    },
-    goToCommunity() {
-      // Implementa la lógica para ir a la comunidad
-      console.log('Ir a la comunidad');
-    },
-    goToSupport() {
-      // Implementa la lógica para ir al soporte
-      console.log('Ir al soporte');
-    },
-    installSteam() {
-      // Implementa la lógica para instalar Steam
-      console.log('Instalar Steam');
-    },
     openLoginModal() {
       this.showLoginModal = true; // Abre el modal de inicio de sesión al hacer clic en "Iniciar sesión"
     },
     closeLoginModal() {
       this.showLoginModal = false; // Cierra el modal de inicio de sesión
+    },
+    toggleCarrito() {
+      this.showCarrito = !this.showCarrito; // Alterna la visibilidad del carrito
     }
   },
   components: {
     LoginModal,
-    Button
+    Button,
+    ButtonGris,
+    CarritoCompra // Declara el componente CarritoCompra
   }
 };
 </script>
@@ -95,7 +86,6 @@ export default {
   width: 1728px;
   height: 107px;
   padding: 30px 45px;
-  background: white;
   justify-content: space-between;
   align-items: flex-start;
   gap: 45px;
@@ -107,7 +97,6 @@ export default {
   flex-direction: row;
   gap: 2rem;
 }
-
 
 .right-nav,
 .left-nav {
@@ -126,7 +115,7 @@ export default {
 
 .button {
   text-align: center;
-  color: #151615;
+  color: var(--100);
   font-size: 22px;
   font-family: Roboto;
   font-weight: 500;
@@ -136,9 +125,9 @@ export default {
 
 .primary-button {
   padding: 10px 20px;
-  background: #00FF03;
+  background: var(--primary);
   border-radius: 45px;
-  color: #151615;
+  color: var(--100);
   font-size: 22px;
   font-family: Roboto;
   font-weight: 500;
