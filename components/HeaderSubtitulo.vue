@@ -20,16 +20,21 @@
         <div v-if="showPuntos" class="BttIcons">
           <ButtonGris :showText="true" :buttonText="buttonText" />
         </div>
+        <div v-if="showPagar" class="bttPagar">
+          <Button :showText="true" :buttonText="buttonText" />
+        </div>
       </div>
     </div>
   </template>
   
   <script>
   import ButtonGris from '../components/ButtonGris.vue';
+  import Button from '../components/Button.vue';
   
   export default {
     components: {
       ButtonGris,
+      Button
     },
     props: {
       buttonText: {
@@ -45,6 +50,10 @@
         default: true
       },
       showPuntos: {
+        type: Boolean,
+        default: true
+      },
+      showPagar: {
         type: Boolean,
         default: true
       },
@@ -149,6 +158,10 @@
   
   .dropdown li:hover {
     background-color: #f0f0f0;
+  }
+  .bttPagar{
+    display: flex;
+    justify-content: flex-end;
   }
   </style>
   

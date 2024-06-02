@@ -18,7 +18,9 @@
             <div class="total-price">13,95€</div>
           </div>
           <div class="pagar-button">
+            <NuxtLink to="/resumencompra">
             <div class="pagar-text">Pagar</div>
+        </NuxtLink>
           </div>
         </div>
       </div>

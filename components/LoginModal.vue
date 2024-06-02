@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <div class="modal-overlay" @click.self="closeModal">
     <div class="modal-wrapper">
       <div class="modal-content">
@@ -55,7 +55,7 @@ export default {
     }
   }
 };
-</script>
+</script> -->
 
 <style scoped>
 .modal-overlay {
@@ -138,3 +138,58 @@ input {
   cursor: pointer;
 }
 </style>
+<template>
+  <div class="modal-overlay" @click.self="closeModal">
+    <div class="modal-wrapper">
+      <div class="modal-content">
+        <button class="close-button" @click="closeModal">×</button>
+        <h2 class="modal-title h2">Inicia sesión en Steam</h2>
+        <div class="form-group">
+          <input class="sec-p" type="text" id="username" v-model="username" placeholder="Usuario">
+        </div>
+        <div class="form-group">
+          <input type="password" id="password" v-model="password" placeholder="Password">
+        </div>
+        <div class="button-group">
+          <Button buttonText="Login" @click="emitLogin"/>
+        </div>
+        <div class="button-group">
+          <ButtonGris :showText="true" buttonText="Crear cuenta"/>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+import Button from '../components/Button.vue';
+import ButtonGris from '../components/ButtonGris.vue';
+export default {
+  components: {
+    Button,
+    ButtonGris
+  },
+  data() {
+    return {
+      username: '',
+      password: ''
+    };
+  },
+  methods: {
+    emitLogin() {
+      this.$emit('login', { username: this.username, password: this.password });
+      // Limpia los campos después de iniciar sesión
+      this.username = '';
+      this.password = '';
+    },
+    closeModal() {
+      this.$emit('close');
+    },
+    createAccount() {
+      // Implementa aquí la lógica para redirigir al usuario a la página de registro
+      console.log('Redirigiendo a la página de registro...');
+    }
+  }
+};
+</script>
+

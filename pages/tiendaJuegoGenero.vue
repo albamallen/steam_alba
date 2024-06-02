@@ -2,7 +2,7 @@
     <div>
       <HeaderTitulo title="Tienda" />
       <TiendaNavBar />
-      <HeaderSubtitulo :HeadingText="genreName" :showPuntos="false" :options="firstOptions"/>
+      <HeaderSubtitulo :HeadingText="genreName" :showPagar="false" :showPuntos="false" :options="firstOptions"/>
       <div class="cards">
       <SingleCardGame v-for="game in games" :key="game.id" :game="game"/>
     </div>

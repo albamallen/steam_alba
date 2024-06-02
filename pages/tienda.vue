@@ -2,7 +2,7 @@
   <div>
     <HeaderTitulo title="Tienda" />
     <TiendaNavBar />
-    <HeaderSubtitulo HeadingText="Populares" :showButton="false" :showPuntos="false"/>
+    <HeaderSubtitulo HeadingText="Populares" :showPagar="false" :showButton="false" :showPuntos="false"/>
     <div class="cards">
       <SimpleGameCard
         v-for="game in games" 
@@ -13,7 +13,7 @@
         :gameGenre="game.genre" 
       />
     </div>
-    <HeaderSubtitulo HeadingText="Próximamente" :showButton="false" :showPuntos="false"/>
+    <HeaderSubtitulo HeadingText="Próximamente" :showPagar="false" :showButton="false" :showPuntos="false"/>
     <div class="cards">
       <SimpleGameCard
         v-for="game in upcomingGames" 

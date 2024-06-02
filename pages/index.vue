@@ -2,7 +2,7 @@
   <div>
     <SwiperComponent :slides="featuredGames" />
     <CardGame :game="highlightGame" />
-    <HeaderSubtitulo HeadingText="Juegos destacados" :showButton="false" :showPuntos="false" />
+    <HeaderSubtitulo HeadingText="Juegos destacados" :showPagar="false" :showButton="false" :showPuntos="false" />
     <div class="cards">
       <SingleCardGame v-for="game in games" :key="game.id" :game="game" />
     </div>
