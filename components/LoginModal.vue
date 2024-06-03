@@ -1,4 +1,4 @@
-<!-- <template>
+ <template>
   <div class="modal-overlay" @click.self="closeModal">
     <div class="modal-wrapper">
       <div class="modal-content">
@@ -11,10 +11,10 @@
           <input type="password" id="password" v-model="password" placeholder="Password">
         </div>
         <div class="button-group">
-          <Button buttonText="Login" />
+          <Button buttonText="Login" @click="emitLogin"/>
         </div>
         <div class="button-group">
-          <ButtonGris :showText="true" buttonText="Crear cuenta"/>
+          <ButtonGris :showText="true" buttonText="Crear cuenta" @click="emitOpenSignup"/>
         </div>
       </div>
     </div>
@@ -24,6 +24,7 @@
 <script>
 import Button from '../components/Button.vue';
 import ButtonGris from '../components/ButtonGris.vue';
+
 export default {
   components: {
     Button,
@@ -36,27 +37,20 @@ export default {
     };
   },
   methods: {
-    login() {
-      // Implementa aquí la lógica de inicio de sesión
-      console.log('Usuario:', this.username);
-      console.log('Password:', this.password);
-      // Limpia los campos después de iniciar sesión
+    emitLogin() {
+      this.$emit('login', { username: this.username, password: this.password });
       this.username = '';
       this.password = '';
-      // Cierra el modal después de iniciar sesión
-      this.closeModal();
     },
     closeModal() {
       this.$emit('close');
     },
-    createAccount() {
-      // Implementa aquí la lógica para redirigir al usuario a la página de registro
-      console.log('Redirigiendo a la página de registro...');
+    emitOpenSignup() {
+      this.$emit('openSignup');
     }
   }
 };
-</script> -->
-
+</script>
 <style scoped>
 .modal-overlay {
   position: fixed;
@@ -68,7 +62,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1000;
+  z-index: 2500;
 }
 
 .modal-wrapper {
@@ -138,58 +132,3 @@ input {
   cursor: pointer;
 }
 </style>
-<template>
-  <div class="modal-overlay" @click.self="closeModal">
-    <div class="modal-wrapper">
-      <div class="modal-content">
-        <button class="close-button" @click="closeModal">×</button>
-        <h2 class="modal-title h2">Inicia sesión en Steam</h2>
-        <div class="form-group">
-          <input class="sec-p" type="text" id="username" v-model="username" placeholder="Usuario">
-        </div>
-        <div class="form-group">
-          <input type="password" id="password" v-model="password" placeholder="Password">
-        </div>
-        <div class="button-group">
-          <Button buttonText="Login" @click="emitLogin"/>
-        </div>
-        <div class="button-group">
-          <ButtonGris :showText="true" buttonText="Crear cuenta"/>
-        </div>
-      </div>
-    </div>
-  </div>
-</template>
-
-<script>
-import Button from '../components/Button.vue';
-import ButtonGris from '../components/ButtonGris.vue';
-export default {
-  components: {
-    Button,
-    ButtonGris
-  },
-  data() {
-    return {
-      username: '',
-      password: ''
-    };
-  },
-  methods: {
-    emitLogin() {
-      this.$emit('login', { username: this.username, password: this.password });
-      // Limpia los campos después de iniciar sesión
-      this.username = '';
-      this.password = '';
-    },
-    closeModal() {
-      this.$emit('close');
-    },
-    createAccount() {
-      // Implementa aquí la lógica para redirigir al usuario a la página de registro
-      console.log('Redirigiendo a la página de registro...');
-    }
-  }
-};
-</script>
-

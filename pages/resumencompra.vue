@@ -3,7 +3,7 @@
       <CardGame :game="highlightGame" />
       <CardGame :game="highlightGame1" />
       <div class="left">
-        <HeaderSubtitulo HeadingText="TOTAL a pagar : 27,9€"  :showButton="false" :showPuntos="false" :showPagar="true" buttonText="REALIZAR COMPRA" />
+        <HeaderSubtitulo HeadingText="TOTAL a pagar : 27,9€" :showButton="false" :showPuntos="false" :showPagar="true" buttonText="REALIZAR COMPRA" />
       </div>
 
     </div>

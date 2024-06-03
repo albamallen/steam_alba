@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
     <div class="modal-overlay">
       <div class="modal-wrapper">
         <div class="modal-content">
@@ -34,7 +34,7 @@
         </div>
       </div>
     </div>
-  </template>-->
+  </template>
   <script>
   export default {
     data() {
@@ -62,7 +62,7 @@
       }
     }
   }
-  </script>
+  </script>   -->
   
 <style scoped>
   .modal-overlay {
@@ -151,4 +151,70 @@
     background-color: #909090;
   }
   </style>
+
+
+   <template>
+    <div class="modal-overlay" style="z-index: 2000;" @click.self="closeModal">
+      <div class="modal-wrapper">
+        <div class="modal-content">
+          <button class="close-button" @click="closeModal">×</button>
+          <h2>Crear cuenta en Steam</h2>
+          <div class="form-group">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" v-model="nombre" placeholder="Nombre">
+            <hr class="line">
+          </div>
+          <div class="form-group">
+            <label for="username">Nombre de usuario:</label>
+            <input type="text" id="username" v-model="username" placeholder="Nombre de usuario">
+            <hr class="line">
+          </div>
+          <div class="form-group">
+            <label for="email">Correo electrónico:</label>
+            <input type="email" id="email" v-model="email" placeholder="Correo electrónico">
+            <hr class="line">
+          </div>
+          <div class="form-group">
+            <label for="password">Contraseña:</label>
+            <input type="password" id="password" v-model="password" placeholder="Contraseña">
+            <hr class="line">
+          </div>
+          <div class="button-group">
+            <button @click="register" class="login-button">Crear cuenta</button>
+          </div>
+          <div class="button-group">
+            <button @click="emitOpenLogin" class="create-account-button">Login</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+  
+  <script>
+  export default {
+    data() {
+      return {
+        nombre: '',
+        username: '',
+        email: '',
+        password: ''
+      };
+    },
+    methods: {
+      register() {
+        console.log('Nombre:', this.nombre);
+        console.log('Nombre de usuario:', this.username);
+        console.log('Correo electrónico:', this.email);
+        console.log('Contraseña:', this.password);
+        this.closeModal();
+      },
+      closeModal() {
+        this.$emit('close');
+      },
+      emitOpenLogin() {
+        this.$emit('openLogin');
+      }
+    }
+  };
+  </script>
   

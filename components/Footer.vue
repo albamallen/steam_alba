@@ -258,20 +258,6 @@
     display: inline-flex;
   }
   
-  /* .BttIconSearch {
-    width: 40px;
-    height: 40px;
-    padding-left: 8px;
-    padding-right: 8px;
-    padding-top: 4px;
-    padding-bottom: 4px;
-    background: #D5D5D5;
-    border-radius: 27.60px;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-  } */
-  
   .Search {
     width: 16.68px;
     height: 16.66px;
