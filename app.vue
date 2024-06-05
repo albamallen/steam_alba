@@ -2,7 +2,7 @@
   <div>
     <NavBar />
     <NuxtPage />
-    <Footer />
+    <!-- <Footer /> -->
   </div>
 </template>
 
@@ -62,4 +62,33 @@ p{
   .containert{
     @apply p-8;
   } 
+
+/* Estilos para dispositivos con un ancho máximo de 480px (típicamente móviles) */
+@media (max-width: 480px) {
+  h1 {
+    font-size: 30px;
+  }
+  h2{
+    font-size: 20px;
+  }
+  h3{
+    font-size: 15px;
+  }
+  h4{
+    font-size: 25px;
+  }
+  h5{
+    font-size: 12px;
+  }
+  p{
+    font-size: 10px;
+  }
+  .sec-text{
+    font-size: 10px;
+  }
+  .sec-p{
+    font-size: 10px;
+  }
+}
+
 </style>

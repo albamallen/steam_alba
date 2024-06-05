@@ -46,4 +46,10 @@ button.active {
   background-color: transparent;
   border: 2px solid var(--100);
 }
+
+@media (max-width: 480px) {
+  button {
+    font-size: 12px;
+  }
+}
 </style>

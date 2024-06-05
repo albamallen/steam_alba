@@ -1,5 +1,5 @@
 <template>
-    <button :class="{ active: isActive }" @click="toggleActive" class="h3" >
+    <button :class="{ active: isActive }" @click="toggleActive" class="h3">
         <span v-if="showIcon" class="icon-box">
             <Icon :name="IconName" :size="IconSize"></Icon>
         </span>
@@ -16,15 +16,15 @@ export default {
             type: String,
             default: '{{buttonText}}'
         },
-        showIcon:{
+        showIcon: {
             type: Boolean,
             default: false
         },
-        showText:{
+        showText: {
             type: Boolean,
             default: false
         },
-        IconSize:{
+        IconSize: {
             type: String,
             default: '2rem'
         },

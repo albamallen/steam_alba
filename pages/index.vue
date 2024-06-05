@@ -1,12 +1,18 @@
 <template>
   <div>
-    <SwiperComponent :slides="featuredGames" />
-    <CardGame :game="highlightGame" />
+    <div class="swiper">
+      <SwiperComponent :slides="featuredGames" />
+    </div>
+    <div class="cardgame">
+      <CardGame :game="highlightGame" />
+    </div>
+    <div class="mobile-highlight">
+      <JuegoDestacadoMovil :highlightGame="highlightGame" />
+    </div>
     <HeaderSubtitulo HeadingText="Juegos destacados" :showPagar="false" :showButton="false" :showPuntos="false" />
     <div class="cards">
       <SingleCardGame v-for="game in games" :key="game.id" :game="game" />
     </div>
-    
   </div>
 </template>
 
@@ -16,6 +22,7 @@ import SwiperComponent from '~/components/SwiperComponent.vue';
 import CardGame from '~/components/CardGame.vue';
 import SingleCardGame from '~/components/SingleCardGame.vue';
 import HeaderSubtitulo from '~/components/HeaderSubtitulo.vue';
+import JuegoDestacadoMovil from '~/components/JuegoDestacadoMovil.vue';
 
 const apiKey = '6ef278bbca324856844d239c28a65278'; // Replace with your RAWG API key
 
@@ -24,7 +31,8 @@ export default {
     SwiperComponent,
     CardGame,
     SingleCardGame,
-    HeaderSubtitulo
+    HeaderSubtitulo,
+    JuegoDestacadoMovil
   },
   data() {
     return {
@@ -66,7 +74,8 @@ export default {
           background_image: gameDetailsResponse.data.background_image,
           name: gameDetailsResponse.data.name,
           description: gameDetailsResponse.data.description_raw || 'No description available',
-          genre: gameDetailsResponse.data.genres && gameDetailsResponse.data.genres.length > 0 ? gameDetailsResponse.data.genres[0].name : 'Unknown Genre'
+          genre: gameDetailsResponse.data.genres && gameDetailsResponse.data.genres.length > 0 ? gameDetailsResponse.data.genres[0].name : 'Unknown Genre',
+          price: '13,95€' // Mock price as example, replace with actual data if available
         };
       } catch (error) {
         console.error('Error fetching game details:', error);
@@ -87,5 +96,32 @@ export default {
   overflow-x: auto;
   width: calc(100% - 100px);
   white-space: nowrap;
+}
+
+.mobile-highlight {
+  display: none;
+}
+
+@media (max-width: 480px) {
+  .cardgame {
+    display: none;
+  }
+
+  .cards {
+    gap: 20px;
+    margin-left: 20px;
+    margin-right: 0;
+  }
+
+  .swiper {
+    display: none;
+  }
+
+  .mobile-highlight {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+    align-items: center;
+  }
 }
 </style>

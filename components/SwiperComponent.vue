@@ -96,19 +96,27 @@ export default {
 }
 
 .genero {
-    color: var(--100);
-    word-wrap: break-word;
+  color: var(--100);
+  word-wrap: break-word;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 100%;
-  }
-  .btt-genero {
+}
+
+.btt-genero {
   padding: 5px 10px;
   background: var(--700);
   display: flex;
   justify-content: flex-start;
   align-items: center;
   gap: 10px;
+}
+
+@media (max-width: 480px) {
+  .swiper-container {
+    height: 500px;
+    width: 470px;
+  }
 }
 </style>

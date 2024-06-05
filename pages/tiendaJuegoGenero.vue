@@ -1,15 +1,15 @@
 <template>
-    <div>
-      <HeaderTitulo title="Tienda" />
-      <TiendaNavBar />
-      <HeaderSubtitulo :HeadingText="genreName" :showPagar="false" :showPuntos="false" :options="firstOptions"/>
-      <div class="cards">
-      <SingleCardGame v-for="game in games" :key="game.id" :game="game"/>
+  <div>
+    <HeaderTitulo title="Tienda" />
+    <TiendaNavBar />
+    <HeaderSubtitulo :HeadingText="genreName" :showPagar="false" :showPuntos="false" :options="firstOptions" />
+    <div class="cards">
+      <SingleCardGame v-for="game in games" :key="game.id" :game="game" />
     </div>
-    </div>
-  </template>
-  
-  <script>
+  </div>
+</template>
+
+<script>
 
 
 import axios from 'axios';
@@ -33,16 +33,16 @@ export default {
       highlightGame: {},
       featuredGames: [],
       firstOptions: [
-         { id: 1, text: 'Rol' },
-         { id: 2, text: 'Estrategia' },
-         { id: 3, text: 'Storytelling' },
-         { id: 4, text: 'Indie' },
-         { id: 5, text: 'Aventuras' },
-         { id: 6, text: 'Arcade' },
-         { id: 7, text: 'Individual' },
-         { id: 8, text: 'Multijugador' },
-         { id: 9, text: 'Online' }
-       ]
+        { id: 1, text: 'Rol' },
+        { id: 2, text: 'Estrategia' },
+        { id: 3, text: 'Storytelling' },
+        { id: 4, text: 'Indie' },
+        { id: 5, text: 'Aventuras' },
+        { id: 6, text: 'Arcade' },
+        { id: 7, text: 'Individual' },
+        { id: 8, text: 'Multijugador' },
+        { id: 9, text: 'Online' }
+      ]
     };
   },
   async mounted() {

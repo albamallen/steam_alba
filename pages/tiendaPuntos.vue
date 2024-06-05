@@ -1,9 +1,11 @@
 <template>
   <div>
+    <HeaderTitulo title="Tienda" />
     <TiendaNavBar />
-    <HeaderSubtitulo HeadingText="Tus puntos" :showPagar="false" :showButton="false" :showPuntos="true" buttonText="200pts"/>
+    <HeaderSubtitulo HeadingText="Tus puntos" :showPagar="false" :showButton="false" :showPuntos="true"
+      buttonText="200pts" />
     <div class="cards">
-      <SingleCardGame v-for="game in games" :key="game.id" :game="game"/>
+      <SingleCardGame v-for="game in games" :key="game.id" :game="game" />
     </div>
   </div>
 </template>

@@ -2,28 +2,16 @@
   <div>
     <HeaderTitulo title="Tienda" />
     <TiendaNavBar />
-    <HeaderSubtitulo HeadingText="Populares" :showPagar="false" :showButton="false" :showPuntos="false"/>
+    <HeaderSubtitulo HeadingText="Populares" :showPagar="false" :showButton="false" :showPuntos="false" />
     <div class="cards">
-      <SimpleGameCard
-        v-for="game in games" 
-        :key="game.id" 
-        :gameId="game.id" 
-        :gameImage="game.background_image" 
-        :gameTitle="game.name" 
-        :gameGenre="game.genre" 
-      />
+      <SimpleGameCard v-for="game in games" :key="game.id" :gameId="game.id" :gameImage="game.background_image"
+        :gameTitle="game.name" :gameGenre="game.genre" />
     </div>
-    <HeaderSubtitulo HeadingText="Próximamente" :showPagar="false" :showButton="false" :showPuntos="false"/>
+    <HeaderSubtitulo HeadingText="Próximamente" :showPagar="false" :showButton="false" :showPuntos="false" />
     <div class="cards">
-      <SimpleGameCard
-        v-for="game in upcomingGames" 
-        :key="game.id" 
-        :gameId="game.id" 
-        :gameImage="game.background_image" 
-        :gameTitle="game.name" 
-        :gameGenre="game.genre" 
-      />
-    </div>    
+      <SimpleGameCard v-for="game in upcomingGames" :key="game.id" :gameId="game.id" :gameImage="game.background_image"
+        :gameTitle="game.name" :gameGenre="game.genre" />
+    </div>
   </div>
 </template>
 

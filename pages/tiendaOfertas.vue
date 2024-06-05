@@ -2,18 +2,18 @@
   <div>
     <HeaderTitulo title="Tienda" />
     <TiendaNavBar />
-    <HeaderSubtitulo HeadingText="Juegos gratuitos" :showPagar="false" :showButton="false" :showPuntos="false"/>
+    <HeaderSubtitulo HeadingText="Juegos gratuitos" :showPagar="false" :showButton="false" :showPuntos="false" />
     <SwiperComponent :slides="featuredGames" />
     <div class="cards">
       <SingleCardGame v-for="game in games" :key="game.id" :game="game" />
     </div>
-    
-    <HeaderSubtitulo HeadingText="Promociones" :showPagar="false" :showButton="false" :showPuntos="false"/>
+
+    <HeaderSubtitulo HeadingText="Promociones" :showPagar="false" :showButton="false" :showPuntos="false" />
     <SwiperComponent :slides="featuredGames" />
     <div class="cards">
       <SingleCardGame v-for="game in games" :key="game.id" :game="game" />
     </div>
-    
+
   </div>
 </template>
 

@@ -1,99 +1,3 @@
-<!-- <template>
-  <div class="navbar">
-    <div class="property-wrapper">
-      <div class="logo">
-        <div class="navbar-left">
-          <NuxtLink to="/"><img src="/logo.png" alt="Logo" class="logo"></NuxtLink>
-        </div>
-      </div>
-      <div class="navbar-text">
-        <div class="right-nav">
-          <div class="button-container">
-            <NuxtLink to="/tienda" :class="{ 'nav-link': $route.path !== '/pagina1', 'nav-link-bold': $route.path === '/pagina1' }">Tienda</NuxtLink>
-          </div>
-          <div class="button-container">
-            <NuxtLink to="/soporte" :class="{ 'nav-link': $route.path !== '/pagina1', 'nav-link-bold': $route.path === '/pagina1' }">Soporte</NuxtLink>
-          </div>
-        </div>
-        <div class="left-nav">
-          <nuxt-link to="/install">
-            <Button buttonText="Instala Steam"/>
-          </nuxt-link>
-          <div class="button-container" v-if="!isLoggedIn">
-            <div class="button" @click="openLoginModal">Inicia sesión</div>
-          </div>
-          <div class="buttons-group" v-else>
-            <ButtonGris :showIcon="true" IconName="ic:outline-local-mall" @click="toggleCarrito"/>
-            <div class="profile-menu-wrapper">
-              <ButtonGris :showIcon="true" IconName="line-md:account" @click="toggleProfileMenu"/>
-              <div v-if="showProfileMenu" class="profile-menu">
-                <NuxtLink to="/perfil" class="profile-menu-item">Mi perfil</NuxtLink>
-                <NuxtLink to="/tiendaPuntos" class="profile-menu-item">Mis puntos</NuxtLink>
-                <div class="profile-menu-item" @click="logout">Cerrar sesión</div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <LoginModal v-if="showLoginModal" @login="handleLogin" @close="closeLoginModal" />
-        <CarritoCompra :isVisible="showCarrito" @close="toggleCarrito"/>
-        <SignupModal v-if="showSignupModal" @close="closeSignupModal" @openLogin="openLoginModal" />
-
-      </div>
-    </div>
-  </div>
-</template>
-
-<script>
-import LoginModal from '~/components/LoginModal.vue'; // Importa el componente modal de inicio de sesión
-import Button from '../components/Button.vue';
-import ButtonGris from '../components/ButtonGris.vue';
-import CarritoCompra from '../components/CarritoCompra.vue'; // Importa el componente CarritoCompra
-
-export default {
-  data() {
-    return {
-      showLoginModal: false,
-      showCarrito: false,
-      showProfileMenu: false,
-      isLoggedIn: false // Estado de autenticación
-    };
-  },
-  methods: {
-    openLoginModal() {
-      this.showLoginModal = true; // Abre el modal de inicio de sesión al hacer clic en "Iniciar sesión"
-    },
-    closeLoginModal() {
-      this.showLoginModal = false; // Cierra el modal de inicio de sesión
-    },
-    toggleCarrito() {
-      this.showCarrito = !this.showCarrito; // Alterna la visibilidad del carrito
-    },
-    toggleProfileMenu() {
-      this.showProfileMenu = !this.showProfileMenu; // Alterna la visibilidad del menú de perfil
-    },
-    handleLogin(credentials) {
-      const { username, password } = credentials;
-      if (username === 'alba.mallen' && password === 'steam') {
-        this.isLoggedIn = true; // Marca al usuario como autenticado si las credenciales coinciden
-        this.closeLoginModal(); // Cierra el modal de inicio de sesión
-      } else {
-        alert('Credenciales incorrectas');
-      }
-    },
-    logout() {
-      this.isLoggedIn = false; // Cierra sesión del usuario
-      this.showProfileMenu = false; // Oculta el menú de perfil
-    }
-  },
-  components: {
-    LoginModal,
-    Button,
-    ButtonGris,
-    CarritoCompra // Declara el componente CarritoCompra
-  }
-};
-</script> -->
-
 <template>
   <div class="navbar">
     <div class="property-wrapper">
@@ -105,26 +9,38 @@ export default {
       <div class="navbar-text">
         <div class="right-nav">
           <div class="button-container">
-            <NuxtLink to="/tienda" :class="{ 'nav-link': $route.path !== '/pagina1', 'nav-link-bold': $route.path === '/pagina1' }">Tienda</NuxtLink>
+            <NuxtLink to="/tienda"
+              :class="{ 'nav-link h4': $route.path !== '/pagina1', 'nav-link-bold': $route.path === '/pagina1' }">
+              <h4>Tienda</h4>
+            </NuxtLink>
           </div>
           <div class="button-container">
-            <NuxtLink to="/soporte" :class="{ 'nav-link': $route.path !== '/pagina1', 'nav-link-bold': $route.path === '/pagina1' }">Soporte</NuxtLink>
+            <NuxtLink to="/soporte"
+              :class="{ 'nav-link h4': $route.path !== '/pagina1', 'nav-link-bold': $route.path === '/pagina1' }">
+              <h4>Soporte</h4>
+            </NuxtLink>
           </div>
         </div>
         <div class="left-nav">
+          <NuxtLink to="/menu" class="menubutton">
+            <ButtonGris :showIcon="true" IconName="line-md:close-to-menu-alt-transition" />
+          </NuxtLink>
           <nuxt-link to="/install">
-            <Button buttonText="Instala Steam"/>
+            <div class="install"><Button buttonText="Instala Steam" /></div>
           </nuxt-link>
           <div class="button-container" v-if="!isLoggedIn">
-            <div class="button" @click="openLoginModal">Inicia sesión</div>
+            <div class="button" @click="openLoginModal">
+              <h3>Inicia sesión</h3>
+            </div>
           </div>
           <div class="buttons-group" v-else>
-            <ButtonGris :showIcon="true" IconName="ic:outline-local-mall" @click="toggleCarrito"/>
+            <ButtonGris :showIcon="true" IconName="ic:outline-local-mall" @click="toggleCarrito" />
             <div class="profile-menu-wrapper">
-              <ButtonGris :showIcon="true" IconName="line-md:account" @click="toggleProfileMenu"/>
+              <ButtonGris :showIcon="true" IconName="line-md:account" @click="toggleProfileMenu" />
               <div v-if="showProfileMenu" class="profile-menu">
                 <NuxtLink to="/perfil" class="profile-menu-item">Mi perfil</NuxtLink>
                 <NuxtLink to="/tiendaPuntos" class="profile-menu-item">Mis puntos</NuxtLink>
+                <NuxtLink to="/resumencompra" class="profile-menu-item">Lista de deseos</NuxtLink>
                 <div class="profile-menu-item" @click="logout">Cerrar sesión</div>
               </div>
             </div>
@@ -134,7 +50,7 @@ export default {
     </div>
     <!-- Modales de inicio de sesión y registro -->
     <LoginModal v-if="showLoginModal" @login="handleLogin" @close="closeLoginModal" @openSignup="openSignupModal" />
-    <CarritoCompra :isVisible="showCarrito" @close="toggleCarrito"/>
+    <CarritoCompra :isVisible="showCarrito" @close="toggleCarrito" />
     <SignupModal v-if="showSignupModal" @close="closeSignupModal" @openLogin="openLoginModal" />
   </div>
 </template>
@@ -189,15 +105,15 @@ export default {
       this.isLoggedIn = false; // Cierra sesión del usuario
       this.showProfileMenu = false; // Oculta el menú de perfil
     },
-    },
-    components: {
-      LoginModal,
-      Button,
-      ButtonGris,
-      CarritoCompra,
-      SignupModal // Agregamos el componente SignupModal al registro de componentes
-    }
-  };
+  },
+  components: {
+    LoginModal,
+    Button,
+    ButtonGris,
+    CarritoCompra,
+    SignupModal
+  }
+};
 </script>
 
 
@@ -214,10 +130,14 @@ export default {
   align-items: center;
 }
 
+.menubutton {
+  display: none;
+}
+
 .property-wrapper {
   display: flex;
   flex-direction: row;
-  width: 1728px;
+  width: 100%;
   height: 107px;
   padding: 30px 45px;
   justify-content: space-between;
@@ -249,9 +169,6 @@ export default {
 .button {
   text-align: center;
   color: var(--100);
-  font-size: 22px;
-  font-family: Roboto;
-  font-weight: 500;
   word-wrap: break-word;
   cursor: pointer;
 }
@@ -270,7 +187,7 @@ export default {
 
 .buttons-group {
   display: flex;
-  gap: 20px; /* Espacio entre los botones */
+  gap: 20px;
   align-items: center;
 }
 
@@ -291,7 +208,7 @@ export default {
   flex-direction: column;
   width: 170px;
   margin-top: 10px;
-  z-index: 1000; /* Asegúrate de que el menú está por encima de otros elementos */
+  z-index: 1000;
 }
 
 .profile-menu-item {
@@ -308,5 +225,32 @@ export default {
 .profile-menu-item a {
   text-decoration: none;
   color: inherit;
+}
+
+@media (max-width: 480px) {
+  .logo {
+    width: 3.5rem;
+  }
+
+  .left-nav {
+    gap: 20px;
+  }
+
+  .property-wrapper {
+    width: 100%;
+    height: 90px;
+  }
+
+  .right-nav {
+    display: none;
+  }
+
+  .install {
+    display: none;
+  }
+
+  .menubutton {
+    display: flex;
+  }
 }
 </style>

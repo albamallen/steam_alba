@@ -1,4 +1,4 @@
- <template>
+<template>
   <div class="modal-overlay" @click.self="closeModal">
     <div class="modal-wrapper">
       <div class="modal-content">
@@ -11,10 +11,10 @@
           <input type="password" id="password" v-model="password" placeholder="Password">
         </div>
         <div class="button-group">
-          <Button buttonText="Login" @click="emitLogin"/>
+          <Button buttonText="Login" @click="emitLogin" />
         </div>
         <div class="button-group">
-          <ButtonGris :showText="true" buttonText="Crear cuenta" @click="emitOpenSignup"/>
+          <ButtonGris :showText="true" buttonText="Crear cuenta" @click="emitOpenSignup" />
         </div>
       </div>
     </div>

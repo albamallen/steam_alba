@@ -1,14 +1,20 @@
 <template>
     <div class="Righthero">
         <div class="Frame152">
-            <NuxtLink to="/tienda" :class="{ 'active': currentPage === '/tienda' }" class="link">Nuevos y destacables
+            <NuxtLink to="/tienda" :class="{ 'active': currentPage === '/tienda' }" class="link">
+                <h4>Nuevos y destacables</h4>
             </NuxtLink>
-            <NuxtLink to="/tiendaJuegos" :class="{ 'active': currentPage === '/tiendaJuegos' }" class="link">Juegos por
-                tipo</NuxtLink>
-            <NuxtLink to="/tiendaOfertas" :class="{ 'active': currentPage === '/tiendaOfertas' }" class="link">Ofertas
+            <NuxtLink to="/tiendaJuegos" :class="{ 'active': currentPage === '/tiendaJuegos' }" class="link">
+                <h4>Juegos por
+                    tipo</h4>
             </NuxtLink>
-            <NuxtLink to="/tiendaPuntos" :class="{ 'active': currentPage === '/tiendaPuntos' }" class="link">Tienda de
-                puntos</NuxtLink>
+            <NuxtLink to="/tiendaOfertas" :class="{ 'active': currentPage === '/tiendaOfertas' }" class="link">
+                <h4>Ofertas</h4>
+            </NuxtLink>
+            <NuxtLink to="/tiendaPuntos" :class="{ 'active': currentPage === '/tiendaPuntos' }" class="link">
+                <h4>Tienda de
+                    puntos</h4>
+            </NuxtLink>
         </div>
     </div>
 </template>
@@ -71,5 +77,14 @@ export default {
     border-radius: 41px;
     border: 1px var(--primary) solid;
     padding: .25rem 1rem;
+}
+
+@media (max-width: 480px) {
+    .Frame152 {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        align-items: flex-start;
+    }
 }
 </style>
