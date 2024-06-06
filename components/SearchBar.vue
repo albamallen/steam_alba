@@ -5,13 +5,7 @@
                 <input type="text" v-model="searchQuery" class="SearchInput" placeholder="Search..."
                     @focus="isFocused = true" @blur="isFocused = false">
             </div>
-            <div class="BttIconSearch" :class="{ 'Active': isFocused }" @click="search">
-                <div class="Icons">
-                    <div class="Search">
-                        <Icon name="line-md:search" size="2em"></Icon>
-                    </div>
-                </div>
-            </div>
+            <ButtonGris :showIcon="true" IconName="line-md:search" />
         </div>
     </div>
 </template>
@@ -35,7 +29,7 @@ export default {
 
 <style scoped>
 .Property1Default {
-    padding: 30px;
+    padding: 30px 0px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -44,7 +38,7 @@ export default {
 
 .Searchbar {
     height: 80px;
-    padding: 30px;
+    padding: 30px 10px 30px 20px;
     background: #D5D5D5;
     border-radius: 41px;
     display: flex;
@@ -75,40 +69,9 @@ export default {
     font-weight: 400;
 }
 
-.BttIconSearch {
-    width: 62px;
-    height: 62px;
-    padding: 10px 20px;
-    background: #D5D5D5;
-    border-radius: 41px;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    cursor: pointer;
-}
-
-.BttIconSearch.Active {
-    background: #B8B8B8;
-}
-
-.Icons {
-    width: 51.90px;
-    height: 51.90px;
-    position: relative;
-}
-
-.BoundingBox {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    background: #D9D9D9;
-}
-
-.Search {
-    width: 41.70px;
-    height: 41.64px;
-    left: 5.10px;
-    top: 5.13px;
-    position: absolute;
+@media (max-width: 480px) {
+    .Property1Default {
+        padding: 0;
+    }
 }
 </style>

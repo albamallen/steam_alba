@@ -1,13 +1,30 @@
 <template>
   <div>
-    <CardGame :game="highlightGame" />
-    <CardGame :game="highlightGame1" />
+    <div class="juegos">
+      <CardGame :game="highlightGame" />
+      <CardGame :game="highlightGame1" />
+    </div>
+    <div class="juegomovil">
+      <CardMovil :game="highlightGame" />
+      <CardMovil :game="highlightGame1" />
+    </div>
     <div class="left">
       <HeaderSubtitulo HeadingText="TOTAL a pagar : 27,9€" :showButton="false" :showPuntos="false" :showPagar="true"
         buttonText="REALIZAR COMPRA" />
     </div>
     <HeaderSubtitulo HeadingText="Juegos Relacionados" :showButton="false" :showPuntos="false" :showPagar="false" />
-
+    <div class="cards">
+      <SingleCardGame v-for="game in games" :key="game.id" :game="game" />
+    </div>
+    <div class="mobile-cards">
+      <CardGameMovil
+        v-for="game in games"
+        :key="game.id"
+        :gameId="game.id"
+        :gameName="game.name"
+        :imageUrl="game.background_image"
+      />
+    </div>
   </div>
 </template>
 
@@ -15,6 +32,7 @@
 import axios from 'axios';
 import SwiperComponent from '~/components/SwiperComponent.vue';
 import CardGame from '~/components/CardGame.vue';
+import CardMovil from '~/components/CardMovil.vue';
 import SingleCardGame from '~/components/SingleCardGame.vue';
 import HeaderSubtitulo from '~/components/HeaderSubtitulo.vue';
 
@@ -96,5 +114,18 @@ export default {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
+}
+.juegomovil{
+  display: none;
+}
+
+@media (max-width: 480px) {
+  .juegos{
+    display: none;
+  }
+  .juegomovil{
+    display: flex;
+    flex-direction: column;
+  }
 }
 </style>

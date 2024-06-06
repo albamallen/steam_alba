@@ -13,6 +13,15 @@
     <div class="cards">
       <SingleCardGame v-for="game in games" :key="game.id" :game="game" />
     </div>
+    <div class="mobile-cards">
+      <CardGameMovil
+        v-for="game in games"
+        :key="game.id"
+        :gameId="game.id"
+        :gameName="game.name"
+        :imageUrl="game.background_image"
+      />
+    </div>
   </div>
 </template>
 
@@ -23,6 +32,7 @@ import CardGame from '~/components/CardGame.vue';
 import SingleCardGame from '~/components/SingleCardGame.vue';
 import HeaderSubtitulo from '~/components/HeaderSubtitulo.vue';
 import JuegoDestacadoMovil from '~/components/JuegoDestacadoMovil.vue';
+import CardGameMovil from '~/components/CardGameMovil.vue';
 
 const apiKey = '6ef278bbca324856844d239c28a65278'; // Replace with your RAWG API key
 
@@ -32,7 +42,8 @@ export default {
     CardGame,
     SingleCardGame,
     HeaderSubtitulo,
-    JuegoDestacadoMovil
+    JuegoDestacadoMovil,
+    CardGameMovil
   },
   data() {
     return {
@@ -98,6 +109,10 @@ export default {
   white-space: nowrap;
 }
 
+.mobile-cards {
+  display: none;
+}
+
 .mobile-highlight {
   display: none;
 }
@@ -108,9 +123,7 @@ export default {
   }
 
   .cards {
-    gap: 20px;
-    margin-left: 20px;
-    margin-right: 0;
+    display: none;
   }
 
   .swiper {
@@ -122,6 +135,16 @@ export default {
     justify-content: center;
     margin-top: 2rem;
     align-items: center;
+  }
+
+  .mobile-cards {
+    margin-left: 20px;
+    margin-right: 20px;
+    gap: 20px;
+    display: flex;
+    justify-content: flex-start;
+    overflow-x: auto;
+    overflow-y: none;
   }
 }
 </style>

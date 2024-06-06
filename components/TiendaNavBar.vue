@@ -5,17 +5,19 @@
                 <h4>Nuevos y destacables</h4>
             </NuxtLink>
             <NuxtLink to="/tiendaJuegos" :class="{ 'active': currentPage === '/tiendaJuegos' }" class="link">
-                <h4>Juegos por
-                    tipo</h4>
+                <h4>Juegos por tipo</h4>
             </NuxtLink>
             <NuxtLink to="/tiendaOfertas" :class="{ 'active': currentPage === '/tiendaOfertas' }" class="link">
                 <h4>Ofertas</h4>
             </NuxtLink>
             <NuxtLink to="/tiendaPuntos" :class="{ 'active': currentPage === '/tiendaPuntos' }" class="link">
-                <h4>Tienda de
-                    puntos</h4>
+                <h4>Tienda de puntos</h4>
             </NuxtLink>
+            <div class="searchbar">
+                <SearchBar />
+            </div>
         </div>
+
     </div>
 </template>
 
@@ -79,12 +81,20 @@ export default {
     padding: .25rem 1rem;
 }
 
+.searchbar {
+    display: none;
+}
+
 @media (max-width: 480px) {
     .Frame152 {
         display: flex;
         flex-direction: column;
         gap: 1rem;
         align-items: flex-start;
+    }
+
+    .searchbar {
+        display: flex;
     }
 }
 </style>

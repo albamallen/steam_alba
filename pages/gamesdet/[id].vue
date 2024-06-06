@@ -3,8 +3,8 @@
         <div v-if="data">
             <div class="Frame189">
                 <div class="Frame191">
-                    <img :src="data.background_image" alt="Game Image" class="Image86"
-                        :style="{ height: `${getDescriptionWidth() * 0.5}px` }" />
+                    <img :src="data.background_image" alt="Game Image" class="Image86" />
+                    <img :src="data.background_image" alt="Game Image" class="Image" />
                     <div class="Textcontainer">
                         <div class="Frame188">
                             <div class="Textdiv">
@@ -16,14 +16,13 @@
                             </div>
                             <div class="Frame176">
                                 <div class="Bttdiv align-end">
-                                    <Button buttonText="13,95€" />
+                                    <Button :buttonText="'13,95€'" />
                                 </div>
                                 <div class="BttIconLikeSmall">
                                     <ButtonGris :showIcon="true" IconName="line-md:plus" />
                                     <ButtonGris :showIcon="true" IconName="line-md:heart" />
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -36,15 +35,17 @@
             <p>Loading...</p>
         </div>
         <HeaderSubtitulo HeadingText="Opiniones" :showPagar="false" :showButton="false" :showPuntos="false" />
-
         <div class="opiniones">
             <OpinionCard v-for="(user, index) in displayedUsers" :key="index" :user="user" class="opinion-card" />
         </div>
-        <div v-if="users.length > displayedUsers.length" class="load-more">
-            <button @click="loadMoreUsers">Load more</button>
-        </div>
         <HeaderSubtitulo HeadingText="Juegos Relacionados" :showPagar="false" :showButton="false" :showPuntos="false" />
-
+        <div class="cards">
+            <SingleCardGame v-for="game in games" :key="game.id" :game="game" />
+        </div>
+        <div class="mobile-cards">
+            <CardGameMovil v-for="game in games" :key="game.id" :gameId="game.id" :gameName="game.name"
+                :imageUrl="game.background_image" />
+        </div>
     </div>
 </template>
 
@@ -55,6 +56,9 @@ import { useRoute } from 'vue-router';
 import Button from '../components/Button.vue';
 import ButtonGris from '../components/ButtonGris.vue';
 import OpinionCard from '../components/OpinionCard.vue';
+import HeaderSubtitulo from '../components/HeaderSubtitulo.vue';
+import SingleCardGame from '../components/SingleCardGame.vue';
+import CardGameMovil from '../components/CardGameMovil.vue';
 
 const route = useRoute();
 const data = ref(null);
@@ -62,12 +66,7 @@ const error = ref(null);
 const users = ref([]);
 const displayedUsers = ref([]);
 const usersToShow = 3;
-
-const getDescriptionWidth = () => {
-    if (!data.value) return 0;
-    const description = data.value.description || '';
-    return description.length;
-};
+const games = ref([]);
 
 const fetchGameData = async () => {
     const apiKey = '6ef278bbca324856844d239c28a65278';
@@ -96,14 +95,20 @@ const fetchUserData = async () => {
     }
 };
 
-const loadMoreUsers = () => {
-    const nextIndex = displayedUsers.value.length;
-    displayedUsers.value = users.value.slice(0, nextIndex + usersToShow);
+const fetchRelatedGames = async () => {
+    const apiKey = '6ef278bbca324856844d239c28a65278';
+    try {
+        const response = await axios.get(`https://api.rawg.io/api/games?key=${apiKey}&page_size=5`);
+        games.value = response.data.results;
+    } catch (err) {
+        console.error('Error fetching related games:', err);
+    }
 };
 
 onMounted(() => {
     fetchGameData();
     fetchUserData();
+    fetchRelatedGames();
 });
 </script>
 
@@ -163,6 +168,10 @@ onMounted(() => {
     word-wrap: break-word;
 }
 
+.Image {
+    display: none;
+}
+
 .NombreDelJuego {
     color: #151615;
     font-size: 40px;
@@ -173,9 +182,6 @@ onMounted(() => {
 
 .Description {
     color: #151615;
-    font-size: 18px;
-    font-family: Neue Haas Grotesk Text Pro;
-    font-weight: 500;
     word-wrap: break-word;
 }
 
@@ -215,19 +221,93 @@ onMounted(() => {
 }
 
 .opiniones {
+    margin-left: 20px;
+    margin-right: 20px;
+    gap: 20px;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 2rem;
-    padding-top: 2rem;
+    justify-content: flex-start;
+    overflow-x: auto;
+    overflow-y: none;
 }
 
 .opinion-card {
     box-sizing: border-box;
 }
 
-.load-more {
-    text-align: center;
-    margin-top: 2rem;
+/* Estilos para la versión móvil */
+@media (max-width: 480px) {
+    .Frame189 {
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        display: inline-flex;
+        padding-left: 1rem;
+    }
+
+    .Frame191 {
+        display: flex;
+        gap: 30px;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .Textdiv {
+        margin-top: 0rem;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: flex-start;
+        display: flex;
+        width: 100%;
+    }
+
+    .Image86 {
+        display: none;
+    }
+
+    .Image {
+        display: block;
+        width: 100%;
+        max-width: 500px; /* Cambia el tamaño para la versión móvil */
+        border-radius: 68px;
+        object-fit: cover;
+        margin-right: 1rem;
+    }
+
+    .Description {
+        color: #151615;
+        word-wrap: break-word;
+        padding-right: 2rem;
+        width: 100%; /* Ocupa todo el ancho en móvil */
+    }
+
+    .Frame188 {
+        align-self: stretch;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: 21px;
+        display: flex;
+        width: 100%;
+    }
+
+    .Textcontainer {
+        width: 100%;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 21px;
+        display: inline-flex;
+    }
+
+    .opiniones {
+        margin-left: 20px;
+        margin-right: 20px;
+        gap: 20px;
+        display: flex;
+        justify-content: center;
+        overflow-x: auto;
+        overflow-y: none;
+    }
 }
 </style>

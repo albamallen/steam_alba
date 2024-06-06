@@ -7,6 +7,10 @@
     <div class="cards">
       <SingleCardGame v-for="game in games" :key="game.id" :game="game" />
     </div>
+    <div class="mobile-cards">
+      <CardGameMovil v-for="game in games" :key="game.id" :gameId="game.id" :gameName="game.name"
+        :imageUrl="game.background_image" />
+    </div>
   </div>
 </template>
 

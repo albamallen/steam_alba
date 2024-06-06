@@ -82,7 +82,6 @@ export default {
 <style scoped>
 .Property1Default {
   width: 100%;
-  height: 120.59px;
   padding-top: 61px;
   padding-bottom: 20px;
   padding-left: 80px;
@@ -163,5 +162,18 @@ export default {
 .bttPagar {
   display: flex;
   justify-content: flex-end;
+}
+@media (max-width: 480px) {
+  .Property1Default {
+  width: 100%;
+  padding-top: 21px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 40px;
+  display: inline-flex;
+}
 }
 </style>

@@ -2,8 +2,8 @@
   <div v-if="isVisible" class="modal-overlay" @click.self="closeCarrito">
     <div class="modal-carrito">
       <div class="carrito-header">
-        <div class="mi-carrito">Mi carrito</div>
-        <button class="close-button" @click="closeCarrito">X</button>
+        <h3 class="mi-carrito">Mi carrito</h3>
+        <button class="close-button" @click="closeCarrito"><ButtonGris :showIcon="true" IconName="line-md:close" /></button>
       </div>
       <div class="carrito-item">
         <div class="game-image" :style="{ backgroundImage: `url(${('/juegocarrito.png')})` }"></div>
@@ -15,12 +15,12 @@
       </div>
       <div class="total-section">
         <div class="total-info">
-          <div class="total">Total</div>
-          <div class="total-price">13,95€</div>
+          <h3 class="total">Total</h3>
+          <div class="sec-p">13,95€</div>
         </div>
         <div class="pagar-button">
           <NuxtLink to="/resumencompra">
-            <div class="pagar-text">Pagar</div>
+            <Button buttonText="Pagar" />
           </NuxtLink>
         </div>
       </div>
@@ -74,13 +74,6 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-
-.mi-carrito {
-  color: black;
-  font-size: 30px;
-  font-family: Roboto;
-  font-weight: 500;
 }
 
 .close-button {
@@ -138,33 +131,4 @@ export default {
   gap: 58px;
 }
 
-.total {
-  color: black;
-  font-size: 30px;
-  font-family: Roboto;
-  font-weight: 500;
-}
-
-.total-price {
-  color: black;
-  font-size: 22px;
-  font-family: DM mono;
-  font-weight: 400;
-}
-
-.pagar-button {
-  padding: 10px 20px;
-  background: #00ff03;
-  border-radius: 45px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.pagar-text {
-  color: #151615;
-  font-size: 30px;
-  font-family: Roboto;
-  font-weight: 500;
-}
 </style>

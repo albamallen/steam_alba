@@ -3,17 +3,27 @@
     <HeaderTitulo title="Tienda" />
     <TiendaNavBar />
     <HeaderSubtitulo HeadingText="Juegos gratuitos" :showPagar="false" :showButton="false" :showPuntos="false" />
-    <SwiperComponent :slides="featuredGames" />
+    <div class="swiper">
+      <SwiperComponent :slides="featuredGames" />
+    </div>
     <div class="cards">
       <SingleCardGame v-for="game in games" :key="game.id" :game="game" />
     </div>
-
+    <div class="mobile-cards">
+      <CardGameMovil v-for="game in games" :key="game.id" :gameId="game.id" :gameName="game.name"
+        :imageUrl="game.background_image" />
+    </div>
     <HeaderSubtitulo HeadingText="Promociones" :showPagar="false" :showButton="false" :showPuntos="false" />
-    <SwiperComponent :slides="featuredGames" />
+    <div class="swiper">
+      <SwiperComponent :slides="featuredGames" />
+    </div>
     <div class="cards">
       <SingleCardGame v-for="game in games" :key="game.id" :game="game" />
     </div>
-
+    <div class="mobile-cards">
+      <CardGameMovil v-for="game in games" :key="game.id" :gameId="game.id" :gameName="game.name"
+        :imageUrl="game.background_image" />
+    </div>
   </div>
 </template>
 
@@ -95,5 +105,15 @@ export default {
   width: calc(100% - 100px);
   white-space: nowrap;
   margin-top: 2rem;
+}
+
+@media (max-width: 480px) {
+  .swiper {
+    display: none;
+  }
+
+  .cards {
+    display: none;
+  }
 }
 </style>

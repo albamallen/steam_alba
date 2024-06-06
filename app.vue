@@ -2,7 +2,7 @@
   <div>
     <NavBar />
     <NuxtPage />
-    <!-- <Footer /> -->
+    <Footer />
   </div>
 </template>
 
@@ -76,6 +76,7 @@ p{
   }
   h4{
     font-size: 25px;
+    font-weight: 700;
   }
   h5{
     font-size: 12px;

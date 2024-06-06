@@ -1,4 +1,5 @@
 <template>
+    
     <div class="herocard">
         <div class="img-container">
             <img :src="highlightGame.background_image" alt="Game Image" class="game-image" />

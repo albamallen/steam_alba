@@ -1,194 +1,182 @@
-<!-- <template>
-    <div class="modal-overlay">
-      <div class="modal-wrapper">
-        <div class="modal-content">
-          <button class="close-button" @click="closeModal">×</button>
-          <h2>Crear cuenta en Steam</h2>
-          
-          <div class="form-group">
-            <label for="nombre">Nombre:</label>
-            <input type="text" id="nombre" v-model="nombre" placeholder="Nombre">
-            <hr class="line">
-          </div>
-          <div class="form-group">
-            <label for="username">Nombre de usuario:</label>
-            <input type="text" id="username" v-model="username" placeholder="Nombre de usuario">
-            <hr class="line">
-          </div>
-          <div class="form-group">
-            <label for="email">Correo electrónico:</label>
-            <input type="email" id="email" v-model="email" placeholder="Correo electrónico">
-            <hr class="line">
-          </div>
-          <div class="form-group">
-            <label for="password">Contraseña:</label>
-            <input type="password" id="password" v-model="password" placeholder="Contraseña">
-            <hr class="line">
-          </div>
-          <div class="button-group">
-            <button @click="register" class="login-button">Crear cuenta</button>
-          </div>
-          <div class="button-group">
-            <button @click="closeModal" class="create-account-button">Login</button>
-          </div>
+<template>
+  <div class="Modalcrearcuenta">
+    <button class="CerrarButton" @click="closeModal">
+      <ButtonGris :showIcon="true" IconName="line-md:close" />
+    </button>
+    <div class="Frame55">
+      <h2 class="CrearUnaCuentaEnSteam">Crear una cuenta en Steam</h2>
+      <div class="Bttdiv">
+        <div class="Textinputsec">
+          <input class="sec-p" type="text" id="username" v-model="username" placeholder="Nombre">
+        </div>
+        <div class="Textinputsec">
+          <input class="sec-p" type="text" id="username" v-model="username" placeholder="Nombre de usuario">
+        </div>
+        <div class="Textinputsec">
+          <input class="sec-p" type="text" id="username" v-model="username" placeholder="Correo electrónico">
+        </div>
+        <div class="Textinputsec">
+          <input class="sec-p" type="password" id="password" v-model="password" placeholder="Password">
         </div>
       </div>
     </div>
-  </template>
-  <script>
-  export default {
-    data() {
-      return {
-        nombre: '',
-        username: '',
-        email: '',
-        password: ''
-        // Más datos de registro
-      }
-    },
-    methods: {
-      register() {
-        // Lógica para crear la cuenta
-        console.log('Nombre:', this.nombre);
-        console.log('Nombre de usuario:', this.username);
-        console.log('Correo electrónico:', this.email);
-        console.log('Contraseña:', this.password);
-        // Más lógica de registro
-        // Cerrar el modal después de registrar
-        this.closeModal();
-      },
-      closeModal() {
-        this.$emit('close');
-      }
-    }
-  }
-  </script>   -->
-
-<style scoped>
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.modal-wrapper {
-  position: absolute;
-}
-
-.modal-content {
-  background-color: #fff;
-  padding: 20px;
-  width: 797px;
-  height: 522px;
-  border-radius: 10px;
-  position: relative;
-}
-
-.close-button {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  font-size: 20px;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-}
-
-.form-group {
-  margin-bottom: 20px;
-  position: relative;
-}
-
-.input {
-  width: 100%;
-  padding: 5px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-.line {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background-color: #000;
-}
-
-.button-group {
-  margin-top: 20px;
-}
-
-.login-button {
-  width: calc(100% - 20px);
-  margin: 10px;
-  padding: 10px 0;
-  background-color: var(--primary);
-  color: #000;
-  border: none;
-  border-radius: 50px;
-  cursor: pointer;
-}
-
-.create-account-button {
-  width: calc(100% - 20px);
-  margin: 10px;
-  padding: 10px 0;
-  background-color: var(--700);
-  color: #000;
-  border: none;
-  border-radius: 50px;
-  cursor: pointer;
-}
-
-.create-account-button:hover {
-  background-color: #909090;
-}
-</style>
-
-
-<template>
-  <div class="modal-overlay" style="z-index: 2000;" @click.self="closeModal">
-    <div class="modal-wrapper">
-      <div class="modal-content">
-        <button class="close-button" @click="closeModal">×</button>
-        <h2>Crear cuenta en Steam</h2>
-        <div class="form-group">
-          <label for="nombre">Nombre:</label>
-          <input type="text" id="nombre" v-model="nombre" placeholder="Nombre">
-          <hr class="line">
-        </div>
-        <div class="form-group">
-          <label for="username">Nombre de usuario:</label>
-          <input type="text" id="username" v-model="username" placeholder="Nombre de usuario">
-          <hr class="line">
-        </div>
-        <div class="form-group">
-          <label for="email">Correo electrónico:</label>
-          <input type="email" id="email" v-model="email" placeholder="Correo electrónico">
-          <hr class="line">
-        </div>
-        <div class="form-group">
-          <label for="password">Contraseña:</label>
-          <input type="password" id="password" v-model="password" placeholder="Contraseña">
-          <hr class="line">
-        </div>
-        <div class="button-group">
-          <button @click="register" class="login-button">Crear cuenta</button>
-        </div>
-        <div class="button-group">
-          <button @click="emitOpenLogin" class="create-account-button">Login</button>
-        </div>
+    <div class="Frame56">
+      <div class="Frame57">
+        <img src="/logo.png" alt="QR Code" style="width: 170.74px; height: 169px;">
+        <p class="textQR">Descárgarte la app escaneando el QR con la cámara de tu móvil</p>
+      </div>
+      <div class="Frame54">
+        <Button buttonText="Crear cuenta" />
+        <button @click="emitOpenLogin">
+          <ButtonGris :showIcon="false" :showText="true" buttonText="Login" />
+        </button>
       </div>
     </div>
   </div>
 </template>
+
+
+
+<style scoped>
+.CerrarButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: transparent;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.Modalcrearcuenta {
+  width: 797px;
+  height: 522px;
+  padding: 40px;
+  background: #FDFDFD;
+  border-radius: 15px;
+  border: 2px black solid;
+  justify-content: center;
+  align-items: center;
+  gap: 71px;
+  display: inline-flex;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2000;
+}
+
+.Frame55 {
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 30px;
+  display: inline-flex;
+}
+
+.CrearUnaCuentaEnSteam {
+  text-align: center;
+  color: #151615;
+  word-wrap: break-word;
+}
+
+.Bttdiv {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  display: flex;
+}
+
+.Textinputsec {
+  align-self: stretch;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px black solid;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 10px;
+  display: inline-flex;
+}
+
+.Search {
+  color: #6C6C6C;
+  font-size: 16px;
+  font-family: SF Mono;
+  font-weight: 400;
+  word-wrap: break-word;
+}
+
+.Frame56 {
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 40px;
+  display: inline-flex;
+}
+
+.Frame57 {
+  height: 229px;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 20px;
+  display: flex;
+}
+
+.Qr {
+  width: 170.74px;
+  height: 169px;
+  position: relative;
+}
+
+.textQR {
+  align-self: stretch;
+  text-align: center;
+  color: #151615;
+  font-size: 16px;
+  font-family: Neue Haas Grotesk Text Pro;
+  font-weight: 400;
+  word-wrap: break-word;
+}
+
+.Frame54 {
+  height: 134px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  display: flex;
+}
+
+@media (max-width: 480px) {
+  .Frame57 {
+    display: none;
+  }
+
+  .Modalcrearcuenta {
+    width: 20rem;
+    height: 522px;
+    background: #FDFDFD;
+    border-radius: 15px;
+    border: 2px black solid;
+    align-items: center;
+    gap: 11px;
+    display: flex;
+    flex-direction: column;
+    transform: translate(-50%, -50%);
+    z-index: 2000;
+  }
+
+  .Frame55 {
+    padding-top: 3rem;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 20px;
+    display: inline-flex;
+  }
+}
+</style>
+
 
 <script>
 export default {

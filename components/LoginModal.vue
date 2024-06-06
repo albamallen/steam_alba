@@ -1,20 +1,20 @@
-<template>
+ <template>
   <div class="modal-overlay" @click.self="closeModal">
     <div class="modal-wrapper">
       <div class="modal-content">
-        <button class="close-button" @click="closeModal">×</button>
+        <button class="close-button" @click="closeModal"><ButtonGris :showIcon="true" IconName="line-md:close" /></button>
         <h2 class="modal-title h2">Inicia sesión en Steam</h2>
         <div class="form-group">
           <input class="sec-p" type="text" id="username" v-model="username" placeholder="Usuario">
         </div>
         <div class="form-group">
-          <input type="password" id="password" v-model="password" placeholder="Password">
+          <input class="sec-p" type="password" id="password" v-model="password" placeholder="Password">
         </div>
         <div class="button-group">
-          <Button buttonText="Login" @click="emitLogin" />
+          <Button buttonText="Login" @click="emitLogin"/>
         </div>
         <div class="button-group">
-          <ButtonGris :showText="true" buttonText="Crear cuenta" @click="emitOpenSignup" />
+          <ButtonGris :showText="true" buttonText="Crear cuenta" @click="emitOpenSignup"/>
         </div>
       </div>
     </div>

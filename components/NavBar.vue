@@ -10,14 +10,14 @@
         <div class="right-nav">
           <div class="button-container">
             <NuxtLink to="/tienda"
-              :class="{ 'nav-link h4': $route.path !== '/pagina1', 'nav-link-bold': $route.path === '/pagina1' }">
-              <h4>Tienda</h4>
+            :class="{ 'active': currentPage === '/tienda' }">
+              <ButtonNegro buttonText="Tienda" />
             </NuxtLink>
           </div>
           <div class="button-container">
             <NuxtLink to="/soporte"
-              :class="{ 'nav-link h4': $route.path !== '/pagina1', 'nav-link-bold': $route.path === '/pagina1' }">
-              <h4>Soporte</h4>
+            :class="{ 'active': currentPage === '/soporte' }">
+              <ButtonNegro buttonText="Soporte" />
             </NuxtLink>
           </div>
         </div>
@@ -63,13 +63,17 @@ import ButtonGris from '../components/ButtonGris.vue';
 import CarritoCompra from '../components/CarritoCompra.vue';
 
 export default {
+    mounted() {
+        this.currentPage = this.$route.path;
+    },
   data() {
     return {
       showLoginModal: false,
       showCarrito: false,
       showProfileMenu: false,
       isLoggedIn: false,
-      showSignupModal: false // Nuevo estado para controlar la visibilidad del SignupModal
+      showSignupModal: false,
+      currentPage: '' // Nuevo estado para controlar la visibilidad del SignupModal
     };
   },
   methods: {
@@ -230,10 +234,12 @@ export default {
 @media (max-width: 480px) {
   .logo {
     width: 3.5rem;
+    display: flex;
+  align-items: center;
   }
 
   .left-nav {
-    gap: 20px;
+    gap: 5px;
   }
 
   .property-wrapper {
@@ -252,5 +258,10 @@ export default {
   .menubutton {
     display: flex;
   }
+  .buttons-group {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
 }
 </style>

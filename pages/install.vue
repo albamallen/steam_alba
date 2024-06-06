@@ -4,19 +4,19 @@
       <div class="Frame235">
         <div class="Logo"><img class="Image59" :src="('/logo.png')" /></div>
         <div class="BttA">
-          <div class="Button">Instala Steam</div>
+          <h1>Instala Steam</h1>
         </div>
       </div>
       <div class="Frame236">
-        <div class="SteamDescription">Steam es el mejor lugar para jugar, hablar sobre juegos y crearlos.</div>
+        <h5 class="SteamDescription">Steam es el mejor lugar para jugar, hablar sobre juegos y crearlos.</h5>
         <div class="StatsFrame">
           <div class="StatsBox">
-            <div class="StatsLabel">Jugando</div>
-            <div class="StatsNumber">4,568,790</div>
+            <h4 class="StatsLabel">Jugando</h4>
+            <h3 class="StatsNumber">4,568,790</h3>
           </div>
           <div class="StatsBox">
-            <div class="StatsLabel">En línea</div>
-            <div class="StatsNumber">13,255,986</div>
+            <h4 class="StatsLabel">En línea</h4>
+            <h3 class="StatsNumber">13,255,986</h3>
           </div>
         </div>
       </div>
@@ -39,15 +39,15 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
   background: linear-gradient(180deg, #00FF03 0%, #151615 110%);
 }
 
 .Frame237 {
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
   gap: 46px;
-  padding: 7.5rem;
+  padding: 7.5rem 0rem;
 }
 
 .Frame235 {
@@ -65,20 +65,12 @@ export default {
 .BttA {
   width: 582px;
   height: 151px;
-  padding: 38.83px 77.66px;
+
   border-radius: 159.21px;
   border: 11.65px #151615 solid;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 38.83px;
-}
-
-.Button {
-  color: #151615;
-  font-size: 50px;
-  font-family: Roboto;
-  font-weight: 500;
 }
 
 .Frame236 {
@@ -90,9 +82,6 @@ export default {
 
 .SteamDescription {
   color: #151615;
-  font-size: 18px;
-  font-family: "Neue Haas Grotesk Text Pro";
-  font-weight: 500;
 }
 
 .StatsFrame {
@@ -109,15 +98,25 @@ export default {
 
 .StatsLabel {
   color: black;
-  font-size: 22px;
-  font-family: "Neue Haas Grotesk Text Pro";
-  font-weight: 500;
 }
 
 .StatsNumber {
   color: black;
-  font-size: 30px;
-  font-family: "Neue Haas Grotesk Text Pro";
-  font-weight: 500;
+}
+
+@media (max-width: 480px) {
+  .BttA {
+    width: 90%;
+    height: 100px;
+    padding: 3rem;
+    border-radius: 100px;
+    border: 11.65px #151615 solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    h1{
+      align-items: center;
+    }
+  }
 }
 </style>

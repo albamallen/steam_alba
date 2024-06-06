@@ -54,7 +54,7 @@ export default {
 button {
     background-color: var(--700);
     color: var(--300);
-    padding: 5px 5px;
+    padding: 10px 10px;
     border: none;
     border-radius: 50px;
     cursor: pointer;

@@ -15,6 +15,12 @@
                         <h4>Soporte</h4>
                     </NuxtLink>
                 </div>
+                <div class="button-container">
+                    <NuxtLink to="/install"
+                        :class="{ 'nav-link h4': $route.path !== '/pagina1', 'nav-link-bold': $route.path === '/pagina1' }">
+                        <h4>Install</h4>
+                    </NuxtLink>
+                </div>
             </div>
             <nuxt-link to="/">
                 <ButtonGris :showIcon="true" IconName="line-md:close-small" />
@@ -34,6 +40,13 @@
         width: 100%;
         gap: 2rem;
         padding-top: 5rem;
+    }
+    .right-nav{
+        align-items: center;
+    }
+    .button-container{
+        padding: 2rem;
+        align-items: center;
     }
 }
 </style>

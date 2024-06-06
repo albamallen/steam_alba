@@ -6,13 +6,13 @@
                     <img class="Image59" :src="user.picture" />
                 </div>
                 <div class="Frame178">
-                    <div class="username">{{ user.name }}</div>
-                    <div class="email">{{ user.email }}</div>
+                    <h4 class="username">{{ user.name }}</h4>
+                    <h5 class="email">{{ user.email }}</h5>
                 </div>
             </div>
-            <div class="ReviewText">
+            <h5 class="ReviewText">
                 {{ userReview }}
-            </div>
+            </h5>
             <div class="Frame181">
                 <div class="Frame180">
                     <div class="Rating">4.5</div>
@@ -95,26 +95,17 @@ export default {
 
 .username {
     color: white;
-    font-size: 22px;
-    font-family: Roboto, sans-serif;
-    font-weight: 500;
     word-wrap: break-word;
 }
 
 .email {
     color: white;
-    font-size: 18px;
-    font-family: Roboto, sans-serif;
-    font-weight: 500;
     word-wrap: break-word;
 }
 
 .ReviewText {
-    width: 323px;
+    width: 100%;
     color: #FDFDFD;
-    font-size: 18px;
-    font-family: Roboto, sans-serif;
-    font-weight: 500;
     word-wrap: break-word;
 }
 
@@ -166,5 +157,44 @@ export default {
     left: 0;
     top: 0;
     position: absolute;
+}
+
+@media (max-width: 480px) {
+    .Frame181 {
+        display: none;
+    }
+
+    .Frame182 {
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: 20px;
+        display: inline-flex;
+    }
+
+    .Frame195 {
+        width: 100px;
+        padding: 1rem;
+        background: #151615;
+        border-radius: 30px;
+        overflow: hidden;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: 10px;
+        display: inline-flex;
+    }
+
+    .ReviewText {
+        width: 50%;
+        color: #FDFDFD;
+        word-wrap: break-word;
+        display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+    }
+
+
 }
 </style>

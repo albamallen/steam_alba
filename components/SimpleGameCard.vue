@@ -142,4 +142,10 @@ export default {
   align-items: center;
   gap: 10px;
 }
+
+@media (max-width: 480px) {
+  .card-juego-titulo{
+    display: none;
+  }
+}
 </style>

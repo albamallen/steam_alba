@@ -7,7 +7,7 @@
         </div>
       </div>
     </div>
-    <div class="NombreDelUsuario">{{ user.username }}</div>
+    <h3 class="NombreDelUsuario">{{ user.username }}</h3>
   </div>
 </template>
 
@@ -52,23 +52,19 @@ export default {
   border-radius: 142px;
   overflow: hidden;
   border: 3px black solid;
-  background-image: url('https://via.placeholder.com/232x232');
   flex-direction: column;
   justify-content: center;
   align-items: center;
   display: flex;
 }
 
-.Image59 {
-  width: 464.10px;
-  height: 232.05px;
-}
-
 .NombreDelUsuario {
-  color: black;
-  font-family: Roboto;
-  font-size: 30px;
-  font-weight: 400;
   word-wrap: break-word;
+}
+@media (max-width: 480px) {
+  .Img{
+    width: 100px;
+    height: 100px;
+  }
 }
 </style>

@@ -4,7 +4,7 @@
       <div class="Frame158">
         <div class="Frame160">
           <div class="Img">
-            <img class="Image59" :src="('/logo.png')" />
+            <img :src="('/logo.png')" />
           </div>
         </div>
       </div>
@@ -25,17 +25,44 @@
       <CardLogros v-for="game in games" :key="game.id" :gameId="game.id" :gameImage="game.background_image"
         :gameTitle="game.name" />
     </div>
+    <div class="mobile-cards">
+      <CardGameMovil
+        v-for="game in games"
+        :key="game.id"
+        :gameId="game.id"
+        :gameName="game.name"
+        :imageUrl="game.background_image"
+      />
+    </div>
     <HeaderSubtitulo HeadingText="Lista de deseos" :showPagar="false" :showButton="false" :showPuntos="false" />
     <div class="cards">
       <SingleCardGame v-for="game in games" :key="game.id" :game="game" />
     </div>
+    <div class="mobile-cards">
+      <CardGameMovil
+        v-for="game in games"
+        :key="game.id"
+        :gameId="game.id"
+        :gameName="game.name"
+        :imageUrl="game.background_image"
+      />
+    </div>
     <HeaderSubtitulo HeadingText="Mis amigos" :showPagar="false" :showButton="false" :showPuntos="false" />
-    <div class="cards">
+    <div class="cards-users">
       <User v-for="(user, index) in users" :key="index" :user="user" />
     </div>
     <HeaderSubtitulo HeadingText="Mis juegos" :showPagar="false" :showButton="false" :showPuntos="false" />
     <div class="cards">
       <SingleCardGame v-for="game in games" :key="game.id" :game="game" />
+    </div>
+    <div class="mobile-cards">
+      <CardGameMovil
+        v-for="game in games"
+        :key="game.id"
+        :gameId="game.id"
+        :gameName="game.name"
+        :imageUrl="game.background_image"
+      />
     </div>
   </div>
 </template>
@@ -125,8 +152,6 @@ export default {
 }
 
 .Frame158 {
-  width: 368px;
-  height: 362px;
   justify-content: center;
   align-items: center;
   gap: 10px;
@@ -134,8 +159,6 @@ export default {
 }
 
 .Frame160 {
-  width: 367px;
-  height: 361px;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
@@ -148,7 +171,6 @@ export default {
   border-radius: 204px;
   overflow: hidden;
   border: 3px black solid;
-  background-image: url(https://via.placeholder.com/368x361);
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -156,7 +178,6 @@ export default {
 }
 
 .Frame208 {
-  width: 529px;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
@@ -166,7 +187,7 @@ export default {
 }
 
 .Frame201 {
-  width: 515px;
+  gap: 4rem;
   justify-content: space-between;
   align-items: center;
   display: inline-flex;
@@ -174,9 +195,6 @@ export default {
 
 .NombreDeUsuario {
   color: black;
-  font-size: 40px;
-  font-family: Neue Haas Grotesk Text Pro;
-  font-weight: 500;
   word-wrap: break-word;
 }
 
@@ -194,5 +212,67 @@ export default {
   font-size: 16px;
   font-family: SF Mono;
   font-weight: 400;
+}
+
+.cards-users {
+  margin-left: 80px;
+  margin-right: 20px;
+  gap: 40px;
+  display: flex;
+  justify-content: flex-start;
+  overflow-x: auto;
+  width: calc(100% - 100px);
+  white-space: nowrap;
+}
+
+@media (max-width: 480px) {
+  .cards {
+    display: none;
+  }
+
+  .Frame202-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+  }
+
+  .Img {
+    width: 100px;
+    height: 100px;
+    border-radius: 204px;
+    overflow: hidden;
+    border: 3px black solid;
+    flex-direction: column;
+    display: flex;
+  }
+
+  .Frame208 {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 10px;
+    display: inline-flex;
+    margin-left: 1rem;
+  }
+
+  .Frame201 {
+    justify-content: space-between;
+    align-items: center;
+    display: inline-flex;
+    padding: 1rem;
+  }
+  .cards-users {
+  margin-left: 36px;
+  margin-right: 0px;
+  gap: 40px;
+  display: flex;
+  justify-content: flex-start;
+  overflow-x: auto;
+  width: 85%;
+  white-space: nowrap;
+}
+
 }
 </style>

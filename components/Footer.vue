@@ -4,15 +4,15 @@
       <div class="Frame63">
         <div class="Endfooter">
           <div class="BttLinkSec">
-            <div class="Link">For any questions, please contact steam@support.com</div>
+            <p class="Link">For any questions, please contact steam@support.com</p>
           </div>
         </div>
         <div class="Frame61">
-          <ButtonGris :showIcon="true" IconName="ic:outline-local-mall" />
-          <ButtonGris :showIcon="true" IconName="ic:outline-local-mall" />
-          <ButtonGris :showIcon="true" IconName="ic:outline-local-mall" />
-          <ButtonGris :showIcon="true" IconName="ic:outline-local-mall" />
-          <ButtonGris :showIcon="true" IconName="ic:outline-local-mall" />
+          <ButtonGris :showIcon="true" IconName="streamline:computer-logo-facebook-2-media-facebook-social" />
+          <ButtonGris :showIcon="true" IconName="streamline:computer-logo-google-media-google-social" />
+          <ButtonGris :showIcon="true" IconName="streamline:adobe" />
+          <ButtonGris :showIcon="true" IconName="streamline:android" />
+          <ButtonGris :showIcon="true" IconName="streamline:apple-solid" />
         </div>
       </div>
       <div class="Frame62">
@@ -59,20 +59,6 @@
     <div class="Frame64">
       <div class="Endfooter">
         <div class="BttLinkSec">
-          <div class="Link">Bread</div>
-        </div>
-        <div class="BttLinkSec">
-          <div class="Link">Bread</div>
-        </div>
-        <div class="BttLinkSec">
-          <div class="Link">Bread</div>
-        </div>
-        <div class="BttLinkSec">
-          <div class="Link">Bread</div>
-        </div>
-      </div>
-      <div class="Endfooter">
-        <div class="BttLinkSec">
           <div class="Link">@2024 Steam. All rights reserved</div>
         </div>
         <div class="Left">
@@ -85,9 +71,25 @@
         </div>
       </div>
     </div>
-    <div class="Frame65">
-      <div class="BttIconSearch">
-        <!-- <ButtonGris :showIcon="true" IconName="ic:outline-local-mall"/> -->
+  </div>
+  <div class="footerMovil">
+    <div class="Endfooter">
+      <div class="BttLinkSec">
+        <div class="sec-text">For any questions, please contact steam@support.com</div>
+      </div>
+    </div>
+    <div class="Frame61">
+      <ButtonGris :showIcon="true" IconSize="1.5rem" IconName="streamline:computer-logo-facebook-2-media-facebook-social" />
+      <ButtonGris :showIcon="true" IconSize="1.5rem" IconName="streamline:computer-logo-google-media-google-social" />
+      <ButtonGris :showIcon="true" IconSize="1.5rem" IconName="streamline:adobe" />
+      <ButtonGris :showIcon="true" IconSize="1.5rem" IconName="streamline:android" />
+      <ButtonGris :showIcon="true" IconSize="1.5rem" IconName="streamline:apple-solid" />
+    </div>
+    <div class="Endfooter">
+      <div class="Left">
+        <div class="BttLinkSec">
+          <div class="Link">@2024 Steam. All rights reserved</div>
+        </div>
       </div>
     </div>
   </div>
@@ -106,9 +108,10 @@ export default {
 </script>
 
 
+
 <style scoped>
 .Footer {
-  width: 1728px;
+  width: 100%;
   height: 520px;
   padding: 60px;
   background: #F8F8F8;
@@ -150,7 +153,6 @@ export default {
 }
 
 .Link {
-  color: #00FF03;
   font-size: 16px;
   font-family: Neue Haas Grotesk Text Pro;
   font-weight: 500;
@@ -164,44 +166,7 @@ export default {
   display: inline-flex;
 }
 
-.BttIcons {
-  width: 39.59px;
-  height: 39.59px;
-  padding-left: 9.90px;
-  padding-right: 9.90px;
-  padding-top: 4.95px;
-  padding-bottom: 4.95px;
-  background: #D5D5D5;
-  border-radius: 20.29px;
-  justify-content: center;
-  align-items: center;
-  display: flex;
-}
-
 .Icons {
-  width: 20.74px;
-  height: 20.74px;
-  position: relative;
-}
-
-.BoundingBox {
-  width: 20.74px;
-  height: 20.74px;
-  left: 0px;
-  top: -0px;
-  position: absolute;
-  background: #D9D9D9;
-}
-
-.Mail {
-  width: 16.99px;
-  height: 16.99px;
-  left: 1.99px;
-  top: 1.92px;
-  position: absolute;
-}
-
-.Vector {
   width: 20.74px;
   height: 20.74px;
   position: relative;
@@ -247,23 +212,98 @@ export default {
   display: flex;
 }
 
-.Frame65 {
-  padding: 10px;
-  left: 1605px;
-  top: 325px;
-  position: absolute;
-  justify-content: flex-start;
-  align-items: flex-start;
-  gap: 10px;
-  display: inline-flex;
+.footerMovil{
+  display: none;
 }
 
-.Search {
-  width: 16.68px;
-  height: 16.66px;
-  left: 2.04px;
-  top: 2.05px;
-  position: absolute;
-  background: var(--100);
+@media (max-width: 480px) {
+  .Footer {
+    display: none;
+  }
+
+  .footerMovil {
+    width: 100%;
+    height: 160px;
+    padding: 25px;
+    background: #151615;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    display: inline-flex;
+  }
+
+  .Endfooter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 182.14px;
+    display: inline-flex;
+  }
+
+  .Frame61 {
+    align-self: stretch;
+    justify-content: center;
+    align-items: center;
+    gap: 8.24px;
+    display: inline-flex;
+  }
+
+  .BttLinkSec {
+    flex: 1 1 0;
+    height: 14.30px;
+    padding: 1.65px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+  }
+  .Icons {
+    width: 17.09px;
+    height: 17.09px;
+    position: relative;
+  }
+
+  .BoundingBox {
+    width: 17.09px;
+    height: 17.09px;
+    left: 0px;
+    top: 0px;
+    position: absolute;
+    background: #D9D9D9;
+  }
+
+  .Mail {
+    width: 14px;
+    height: 14px;
+    left: 1.64px;
+    top: 1.58px;
+    position: absolute;
+  }
+
+  .Vector {
+    width: 12.84px;
+    height: 12.81px;
+    left: 2.13px;
+    top: 2.14px;
+    position: absolute;
+  }
+
+  .Left {
+    align-self: stretch;
+    justify-content: space-between;
+    align-items: flex-start;
+    display: inline-flex;
+  }
+
+  .Link {
+    color: var(--primary);
+    font-size: 9.07px;
+    font-family: Roboto;
+    font-weight: 500;
+    word-wrap: break-word;
+  }
+
+  .Link:last-child {
+    color: #909090;
+  }
 }
 </style>

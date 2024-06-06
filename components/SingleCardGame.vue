@@ -192,4 +192,10 @@ export default {
   align-items: center;
   gap: 10px;
 }
+
+@media (max-width: 480px) {
+  .Property1Default {
+    display: none;
+  }
+}
 </style>
