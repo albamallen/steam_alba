@@ -3,7 +3,7 @@
         <div class="Frame182">
             <div class="Frame179">
                 <div class="Img" :style="{ backgroundImage: `url(${user.picture})` }">
-                    <img class="Image59" :src="user.picture" />
+                    <img :src="`https://picsum.photos/232/232?random=${user.id}`" :alt="user.username" />
                 </div>
                 <div class="Frame178">
                     <h4 class="username">{{ user.name }}</h4>
